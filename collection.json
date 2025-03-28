@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "0b3fad50-2a2a-4ce1-b287-83bdca58917b",
+		"name": "crud-node-sequelize",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4048967"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3333/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Listando todos os clientes."
+			},
+			"response": []
+		},
+		{
+			"name": "Get One",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3333/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes",
+						"1"
+					]
+				},
+				"description": "Buscando um cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Carlos\",\r\n    \"cpf\": \"333.333.333-33\",\r\n    \"nascimento\": \"2003-03-03\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Inserindo um novo cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "Create [Error]",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"C\",\r\n    \"cpf\": \"333.333.333-3a\",\r\n    \"nascimento\": \"a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Tentando inserir um cliente com dados incorretos."
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"Alberto dos Santos\",\r\n    \"cpf\": \"111.111.111-12\",\r\n    \"nascimento\": \"2001-01-11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes",
+						"1"
+					]
+				},
+				"description": "Atualizando os dados de um cliente já existente."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3333/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"clientes",
+						"1"
+					]
+				},
+				"description": "Removendo um cliente."
+			},
+			"response": []
+		}
+	]
+}
