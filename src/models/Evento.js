@@ -14,7 +14,7 @@ class Evento extends Model {
         type: DataTypes.DATEONLY, 
         validate: {
           isDate: { msg: "Data do Evento deve ser preenchida!" },
-          is: {args: ["[0-9]{4}\-[0-9]{2}\-[0-9]{2}"], msg: "Data do Evento deve seguir o padr�o yyyy-MM-dd!" }
+          is: {args: ["[0-9]{4}\-[0-9]{2}\-[0-9]{2}"], msg: "Data do Evento deve seguir o padrão yyyy-MM-dd!" }
         }
       }
     }, { sequelize, modelName: 'evento', tableName: 'eventos' })
