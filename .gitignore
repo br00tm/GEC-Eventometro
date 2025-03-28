@@ -1,2 +1,12 @@
+<<<<<<< HEAD
 node_modules
 database.sqlite
+=======
+# Dependências
+node_modules/
+
+# Banco de dados
+*.sqlite
+*.sqlite3
+*.db
+>>>>>>> dbe65b269efb6f405d99f7613cab12370ee16c01
