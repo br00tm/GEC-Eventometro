@@ -62,6 +62,22 @@ Object.values(models)
         bairro: "Centro", 
         lotacao: 800
     });
+
+    const local3 = await Local.create({
+        nome: "Centro de Eventos", 
+        uf: "MG", 
+        cidade: "Belo Horizonte", 
+        bairro: "Savassi", 
+        lotacao: 1200
+    });
+
+    const local4 = await Local.create({
+        nome: "Convention Center", 
+        uf: "RS", 
+        cidade: "Porto Alegre", 
+        bairro: "Centro", 
+        lotacao: 1500
+    });
     
     // Criar participantes
     const participante1 = await Participante.create({
@@ -76,6 +92,20 @@ Object.values(models)
         email: "mariana@email.com", 
         telefone: "(21) 91234-5678", 
         endereco: "Av Atlântica, 456"
+    });
+
+    const participante3 = await Participante.create({
+        nome: "Roberto Santos", 
+        email: "roberto@email.com", 
+        telefone: "(31) 94567-8901", 
+        endereco: "Av Paulista, 789"
+    });
+
+    const participante4 = await Participante.create({
+        nome: "Ana Paula Lima", 
+        email: "ana@email.com", 
+        telefone: "(51) 92345-6789", 
+        endereco: "Rua dos Pampas, 321"
     });
     
     // Criar palestrantes
@@ -92,6 +122,20 @@ Object.values(models)
         especialidade: "Blockchain", 
         nome_palestra: "Aplicações de Blockchain na Indústria"
     });
+
+    const palestrante3 = await Palestrante.create({
+        nome: "Prof. Marcos Lima", 
+        email: "marcos@email.com", 
+        especialidade: "Cloud Computing", 
+        nome_palestra: "Cloud Computing para Iniciantes"
+    });
+
+    const palestrante4 = await Palestrante.create({
+        nome: "Dra. Paula Silva", 
+        email: "paula@email.com", 
+        especialidade: "Cibersegurança", 
+        nome_palestra: "Segurança na Era Digital"
+    });
     
     // Criar patrocinadores
     const patrocinador1 = await Patrocinador.create({
@@ -100,12 +144,54 @@ Object.values(models)
         cnpj: "12.345.678/0001-90", 
         endereco: "Rua da Tecnologia, 789"
     });
+
+    const patrocinador2 = await Patrocinador.create({
+        nome: "Inovatech", 
+        empresa: "Inovatech SA", 
+        cnpj: "98.765.432/0001-21", 
+        endereco: "Av da Inovação, 456"
+    });
+
+    const patrocinador3 = await Patrocinador.create({
+        nome: "CloudTech", 
+        empresa: "CloudTech Solutions", 
+        cnpj: "45.678.901/0001-34", 
+        endereco: "Rua das Nuvens, 123"
+    });
+
+    const patrocinador4 = await Patrocinador.create({
+        nome: "SecurIT", 
+        empresa: "SecurIT Systems", 
+        cnpj: "23.456.789/0001-56", 
+        endereco: "Av da Segurança, 789"
+    });
     
     // Criar funcionários
     const funcionario1 = await Funcionario.create({
         nome: "Pedro Almeida", 
         cargo: "Coordenador de Eventos", 
         matricula: "FUNC001", 
+        carga_horaria: 40.0
+    });
+
+    const funcionario2 = await Funcionario.create({
+        nome: "Maria Santos", 
+        cargo: "Assistente de Produção", 
+        matricula: "FUNC002", 
+        carga_horaria: 30.0
+    });
+
+    const funcionario3 = await Funcionario.create({
+        nome: "José Oliveira", 
+        cargo: "Técnico de Suporte", 
+        matricula: "FUNC003", 
+        carga_horaria: 40.0
+    });
+
+    const funcionario4 = await Funcionario.create({
+        nome: "Carla Lima", 
+        cargo: "Coordenadora de Marketing", 
+        matricula: "FUNC004", 
         carga_horaria: 40.0
     });
     
@@ -116,6 +202,30 @@ Object.values(models)
         data_avaliacao: "2023-10-15", 
         participante: "Carlos Silva",
         participante_id: participante1.id
+    });
+
+    const avaliacao2 = await Avaliacao.create({
+        nota: 8.8, 
+        comentarios: "Muito bom, mas pode melhorar!", 
+        data_avaliacao: "2023-10-16", 
+        participante: "Mariana Oliveira",
+        participante_id: participante2.id
+    });
+
+    const avaliacao3 = await Avaliacao.create({
+        nota: 9.0, 
+        comentarios: "Ótima organização!", 
+        data_avaliacao: "2023-10-17", 
+        participante: "Roberto Santos",
+        participante_id: participante3.id
+    });
+
+    const avaliacao4 = await Avaliacao.create({
+        nota: 9.2, 
+        comentarios: "Conteúdo muito relevante!", 
+        data_avaliacao: "2023-10-18", 
+        participante: "Ana Paula Lima",
+        participante_id: participante4.id
     });
     
     // Criar eventos
@@ -129,7 +239,22 @@ Object.values(models)
     const evento2 = await Evento.create({
         nome: "Workshop de Inovação", 
         data: "2023-12-05", 
-        local_id: local2.id
+        local_id: local2.id,
+        avaliacao_id: avaliacao2.id
+    });
+
+    const evento3 = await Evento.create({
+        nome: "Cloud Computing Summit", 
+        data: "2023-12-15", 
+        local_id: local3.id,
+        avaliacao_id: avaliacao3.id
+    });
+
+    const evento4 = await Evento.create({
+        nome: "Security Conference", 
+        data: "2023-12-20", 
+        local_id: local4.id,
+        avaliacao_id: avaliacao4.id
     });
     
     // Associar palestrantes a eventos - usando a tabela de junção
@@ -147,11 +272,36 @@ Object.values(models)
         `INSERT INTO evento_palestrante (eventoId, palestranteId, createdAt, updatedAt) 
          VALUES (${evento2.id}, ${palestrante1.id}, datetime('now'), datetime('now'))`
     );
+
+    await sequelize.query(
+        `INSERT INTO evento_palestrante (eventoId, palestranteId, createdAt, updatedAt) 
+         VALUES (${evento3.id}, ${palestrante3.id}, datetime('now'), datetime('now'))`
+    );
+
+    await sequelize.query(
+        `INSERT INTO evento_palestrante (eventoId, palestranteId, createdAt, updatedAt) 
+         VALUES (${evento4.id}, ${palestrante4.id}, datetime('now'), datetime('now'))`
+    );
     
     // Associar patrocinadores a eventos - usando a tabela de junção
     await sequelize.query(
         `INSERT INTO evento_patrocinador (eventoId, patrocinadorId, createdAt, updatedAt) 
          VALUES (${evento1.id}, ${patrocinador1.id}, datetime('now'), datetime('now'))`
+    );
+
+    await sequelize.query(
+        `INSERT INTO evento_patrocinador (eventoId, patrocinadorId, createdAt, updatedAt) 
+         VALUES (${evento2.id}, ${patrocinador2.id}, datetime('now'), datetime('now'))`
+    );
+
+    await sequelize.query(
+        `INSERT INTO evento_patrocinador (eventoId, patrocinadorId, createdAt, updatedAt) 
+         VALUES (${evento3.id}, ${patrocinador3.id}, datetime('now'), datetime('now'))`
+    );
+
+    await sequelize.query(
+        `INSERT INTO evento_patrocinador (eventoId, patrocinadorId, createdAt, updatedAt) 
+         VALUES (${evento4.id}, ${patrocinador4.id}, datetime('now'), datetime('now'))`
     );
     
     // Associar funcionários a eventos - usando a tabela de junção
@@ -164,6 +314,16 @@ Object.values(models)
         `INSERT INTO evento_funcionario (eventoId, funcionarioId, createdAt, updatedAt) 
          VALUES (${evento2.id}, ${funcionario1.id}, datetime('now'), datetime('now'))`
     );
+
+    await sequelize.query(
+        `INSERT INTO evento_funcionario (eventoId, funcionarioId, createdAt, updatedAt) 
+         VALUES (${evento3.id}, ${funcionario2.id}, datetime('now'), datetime('now'))`
+    );
+
+    await sequelize.query(
+        `INSERT INTO evento_funcionario (eventoId, funcionarioId, createdAt, updatedAt) 
+         VALUES (${evento4.id}, ${funcionario3.id}, datetime('now'), datetime('now'))`
+    );
     
     // Criar certificados
     const certificado1 = await Certificado.create({
@@ -173,6 +333,30 @@ Object.values(models)
         tipo_certificado: "Participação",
         participante_id: participante1.id
     });
+
+    const certificado2 = await Certificado.create({
+        nome: "Certificado de Participação - Workshop de Inovação", 
+        data_emissao: "2023-12-06", 
+        cod_validacao: 234567, 
+        tipo_certificado: "Participação",
+        participante_id: participante2.id
+    });
+
+    const certificado3 = await Certificado.create({
+        nome: "Certificado de Participação - Cloud Computing Summit", 
+        data_emissao: "2023-12-16", 
+        cod_validacao: 345678, 
+        tipo_certificado: "Participação",
+        participante_id: participante3.id
+    });
+
+    const certificado4 = await Certificado.create({
+        nome: "Certificado de Participação - Security Conference", 
+        data_emissao: "2023-12-21", 
+        cod_validacao: 456789, 
+        tipo_certificado: "Participação",
+        participante_id: participante4.id
+    });
     
     // Criar presenças
     const presenca1 = await Presenca.create({
@@ -181,6 +365,30 @@ Object.values(models)
         tipo_presenca: "Entrada", 
         modo_registro: "QR Code",
         participante_id: participante1.id
+    });
+
+    const presenca2 = await Presenca.create({
+        data: "2023-12-05", 
+        horario: "14:00", 
+        tipo_presenca: "Entrada", 
+        modo_registro: "QR Code",
+        participante_id: participante2.id
+    });
+
+    const presenca3 = await Presenca.create({
+        data: "2023-12-15", 
+        horario: "10:00", 
+        tipo_presenca: "Entrada", 
+        modo_registro: "QR Code",
+        participante_id: participante3.id
+    });
+
+    const presenca4 = await Presenca.create({
+        data: "2023-12-20", 
+        horario: "13:00", 
+        tipo_presenca: "Entrada", 
+        modo_registro: "QR Code",
+        participante_id: participante4.id
     });
     
     console.log("Banco de dados inicializado com sucesso!");
