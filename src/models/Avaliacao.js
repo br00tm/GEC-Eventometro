@@ -4,19 +4,25 @@ class Avaliacao extends Model {
   static init(sequelize) {
     super.init({
       nota: { 
-        type: DataTypes.FLOAT, 
+        type: DataTypes.INTEGER, 
         validate: {
           notEmpty: { msg: "Nota da Avaliação deve ser preenchida!" },
-          min: { args: [0], msg: "Nota mínima é 0!" },
-          max: { args: [10], msg: "Nota máxima é 10!" }
+          min: { args: [1], msg: "Nota mínima é 1!" },
+          max: { args: [5], msg: "Nota máxima é 5!" }
         }
       },
       comentarios: { 
         type: DataTypes.STRING, 
         validate: {
-          len: { args: [0, 500], msg: "Comentários devem ter no máximo 500 caracteres!" }
+          len: { args: [0, 500], msg: "Comentários devem ter no máximo 500 caracteres!" },
+          obrigatorioSeNotaExtrema(value) {
+            if ((this.nota === 1 || this.nota === 5) && (!value || value.trim() === "")) {
+              throw new Error("Comentários são obrigatórios quando a nota é 1 ou 5!");
+            }
+          }
         }
       },
+      
       data_avaliacao: { 
         type: DataTypes.DATEONLY, 
         validate: {

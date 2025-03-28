@@ -111,7 +111,7 @@ Object.values(models)
     
     // Criar avaliações
     const avaliacao1 = await Avaliacao.create({
-        nota: 9.5, 
+        nota: 4, 
         comentarios: "Evento excelente!", 
         data_avaliacao: "2023-10-15", 
         participante: "Carlos Silva",
