@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0b3fad50-2a2a-4ce1-b287-83bdca58917b",
-		"name": "crud-node-sequelize",
+		"name": "gec-eventometro",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "4048967"
 	},
