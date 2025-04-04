@@ -8,7 +8,7 @@ class Avaliacao extends Model {
         validate: {
           notEmpty: { msg: "Nota da Avaliação deve ser preenchida!" },
           min: { args: [0], msg: "Nota mínima é 0!" },
-          max: { args: [5], msg: "Nota máxima é 10!" }
+          max: { args: [5], msg: "Nota máxima é 5!" }
         }
       },
       comentarios: { 

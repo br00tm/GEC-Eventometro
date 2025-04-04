@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { PresencaService } from "../services/PresencaService.js";
 
-class LocalController {
+class PresencaController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    PresencaService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    PresencaService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    PresencaService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    PresencaService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    PresencaService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { PresencaController };

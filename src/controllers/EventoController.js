@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { EventoService } from "../services/EventoService.js";
 
-class LocalController {
+class EventoController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    EventoService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    EventoService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    EventoService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    EventoService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    EventoService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { EventoController };

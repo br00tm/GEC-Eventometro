@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { PalestranteService } from "../services/PalestranteService.js";
 
-class LocalController {
+class PalestranteController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    PalestranteService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    PalestranteService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    PalestranteService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    PalestranteService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    PalestranteService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { PalestranteController };

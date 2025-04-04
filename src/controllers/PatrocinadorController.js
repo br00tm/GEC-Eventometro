@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { PatrocinadorService } from "../services/PatrocinadorService.js";
 
-class LocalController {
+class PatrocinadorController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    PatrocinadorService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    PatrocinadorService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    PatrocinadorService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    PatrocinadorService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    PatrocinadorService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { PatrocinadorController };

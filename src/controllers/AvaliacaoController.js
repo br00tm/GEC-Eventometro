@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { AvaliacaoService } from "../services/AvaliacaoService.js";
 
-class LocalController {
+class AvaliacaoController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    AvaliacaoService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    AvaliacaoService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    AvaliacaoService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    AvaliacaoService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    AvaliacaoService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { AvaliacaoController };
