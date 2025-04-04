@@ -35,7 +35,7 @@ class Palestrante extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.Evento, { through: 'evento_palestrante', as: 'eventos' });
+
   }
 }
 

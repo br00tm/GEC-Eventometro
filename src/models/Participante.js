@@ -35,9 +35,6 @@ class Participante extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Avaliacao, { foreignKey: 'participante_id', as: 'avaliacoes' });
-    this.hasMany(models.Certificado, { foreignKey: 'participante_id', as: 'certificados' });
-    this.hasMany(models.Presenca, { foreignKey: 'participante_id', as: 'presencas' });
   }
 }
 

@@ -22,7 +22,6 @@ class Evento extends Model {
 
   static associate(models) {
     this.belongsTo(models.Local, { foreignKey: 'local_id', as: 'local' });
-    this.belongsTo(models.Avaliacao, { foreignKey: 'avaliacao_id', as: 'avaliacao' });
     this.belongsToMany(models.Palestrante, { through: 'evento_palestrante', as: 'palestrantes' });
     this.belongsToMany(models.Patrocinador, { through: 'evento_patrocinador', as: 'patrocinadores' });
     this.belongsToMany(models.Funcionario, { through: 'evento_funcionario', as: 'funcionarios' });

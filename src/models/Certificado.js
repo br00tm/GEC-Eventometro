@@ -35,6 +35,7 @@ class Certificado extends Model {
 
   static associate(models) {
     this.belongsTo(models.Participante, { foreignKey: 'participante_id', as: 'participante' });
+    this.belongsTo(models.Evento, { foreignKey: 'evento_id', as: 'evento' });
   }
 }
 
