@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { FuncionarioService } from "../services/FuncionarioService.js";
 
-class LocalController {
+class FuncionarioController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    FuncionarioService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    FuncionarioService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    FuncionarioService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    FuncionarioService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    FuncionarioService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { FuncionarioController };

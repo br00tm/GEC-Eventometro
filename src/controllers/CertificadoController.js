@@ -1,37 +1,36 @@
-import { LocalService } from "../services/LocalService.js";
+import { CertificadoService } from "../services/CertificadoService.js";
 
-class LocalController {
+class CertificadoController {
 
   static async findAll(req, res, next) {
-    LocalService.findAll()
+    CertificadoService.findAll()
       .then(objs => res.json(objs))
       .catch(next);
   }
 
   static async findByPk(req, res, next) {
-    LocalService.findByPk(req)
+    CertificadoService.findByPk(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async create(req, res, next) {
-    LocalService.create(req)
+    CertificadoService.create(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async update(req, res, next) {
-    LocalService.update(req)
+    CertificadoService.update(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
 
   static async delete(req, res, next) {
-    LocalService.delete(req)
+    CertificadoService.delete(req)
       .then(obj => res.json(obj))
       .catch(next);
   }
-
 }
 
-export { LocalController };
+export { CertificadoController };

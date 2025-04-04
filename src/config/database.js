@@ -197,7 +197,7 @@ Object.values(models)
     
     // Criar avaliações
     const avaliacao1 = await Avaliacao.create({
-        nota: 4, 
+        nota: 3.5, 
         comentarios: "Evento excelente!", 
         data_avaliacao: "2023-10-15", 
         participante: "Carlos Silva",
@@ -205,7 +205,7 @@ Object.values(models)
     });
 
     const avaliacao2 = await Avaliacao.create({
-        nota: 8.8, 
+        nota: 3.2, 
         comentarios: "Muito bom, mas pode melhorar!", 
         data_avaliacao: "2023-10-16", 
         participante: "Mariana Oliveira",
@@ -213,7 +213,7 @@ Object.values(models)
     });
 
     const avaliacao3 = await Avaliacao.create({
-        nota: 9.0, 
+        nota: 5, 
         comentarios: "Ótima organização!", 
         data_avaliacao: "2023-10-17", 
         participante: "Roberto Santos",
@@ -221,7 +221,7 @@ Object.values(models)
     });
 
     const avaliacao4 = await Avaliacao.create({
-        nota: 9.2, 
+        nota: 1.2, 
         comentarios: "Conteúdo muito relevante!", 
         data_avaliacao: "2023-10-18", 
         participante: "Ana Paula Lima",
