@@ -35,7 +35,6 @@ class Patrocinador extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.Evento, { through: 'evento_patrocinador', as: 'eventos' });
   }
 }
 

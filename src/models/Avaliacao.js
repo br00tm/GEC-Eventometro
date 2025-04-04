@@ -7,8 +7,8 @@ class Avaliacao extends Model {
         type: DataTypes.INTEGER, 
         validate: {
           notEmpty: { msg: "Nota da Avaliação deve ser preenchida!" },
-          min: { args: [1], msg: "Nota mínima é 1!" },
-          max: { args: [5], msg: "Nota máxima é 5!" }
+          min: { args: [0], msg: "Nota mínima é 0!" },
+          max: { args: [5], msg: "Nota máxima é 10!" }
         }
       },
       comentarios: { 
@@ -41,7 +41,7 @@ class Avaliacao extends Model {
 
   static associate(models) {
     this.belongsTo(models.Participante, { foreignKey: 'participante_id', as: 'participante_obj' });
-    this.hasMany(models.Evento, { foreignKey: 'avaliacao_id', as: 'eventos' });
+    this.belongsTo(models.Evento, { foreignKey: 'evento_id', as: 'evento' });
   }
 }
 

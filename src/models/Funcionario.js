@@ -35,7 +35,7 @@ class Funcionario extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.Evento, { through: 'evento_funcionario', as: 'eventos' });
+    // Associações removidas conforme solicitado
   }
 }
 
