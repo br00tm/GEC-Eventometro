@@ -1,7 +1,7 @@
 import { Certificado } from "../models/Certificado.js";
 import { Participante } from "../models/Participante.js";
 import { Evento } from "../models/Evento.js";
-
+//PEDRO BRITO
 class CertificadoService {
   
   static async findAll(req, res) {

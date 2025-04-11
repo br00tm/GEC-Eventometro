@@ -1,5 +1,5 @@
 import { CertificadoService } from "../services/CertificadoService.js";
-
+//PEDRO BRITO
 class CertificadoController {
 
   static async findAll(req, res, next) {

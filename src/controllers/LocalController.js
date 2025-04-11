@@ -1,5 +1,5 @@
 import { LocalService } from "../services/LocalService.js";
-
+//PEDRO GOMES
 class LocalController {
 
   static async findAll(req, res, next) {

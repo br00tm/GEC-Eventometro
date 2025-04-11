@@ -1,5 +1,5 @@
 import { ParticipanteService } from "../services/ParticipanteService.js";
-
+//PEDRO BRITO
 class ParticipanteController {
 
   static async findAll(req, res, next) {

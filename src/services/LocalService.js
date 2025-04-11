@@ -1,5 +1,5 @@
 import { Local } from "../models/Local.js";
-
+//PEDRO GOMES
 class LocalService {
   
   static async findAll(req, res) {

@@ -1,5 +1,5 @@
 import { PatrocinadorService } from "../services/PatrocinadorService.js";
-
+//PEDRO BRITO
 class PatrocinadorController {
 
   static async findAll(req, res, next) {
