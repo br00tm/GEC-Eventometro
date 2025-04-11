@@ -1,0 +1,284 @@
+type: collection.insomnia.rest/5.0
+name: Eventrometro
+meta:
+  id: wrk_4bf21a733a04452b8fdc68a3f76d0bac
+  created: 1744378829703
+  modified: 1744378829703
+collection:
+  - name: Patrocinador
+    meta:
+      id: fld_46ce2e09417a4c849734dd6a8ed7b91b
+      created: 1744378916803
+      modified: 1744379423082
+      sortKey: -1744378916803
+    children:
+      - url: http://localhost:3333/patrocinador
+        name: Listar Todos
+        meta:
+          id: req_8ad41aa29b064ca2b59ae6e9a48bbc6a
+          created: 1744378924324
+          modified: 1744379076007
+          isPrivate: false
+          sortKey: -1744378924324
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/1
+        name: Listar Por ID
+        meta:
+          id: req_774e69e3848a416c99e1532feceeb529
+          created: 1744378946175
+          modified: 1744379125692
+          isPrivate: false
+          sortKey: -1744378946175
+        method: GET
+        parameters:
+          - id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador
+        name: Create
+        meta:
+          id: req_be506c002dac4232977f8bb38d9ab7a2
+          created: 1744378953229
+          modified: 1744379165581
+          isPrivate: false
+          sortKey: -1744378953229
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "TechCorp",
+              "empresa": "TechCorp Ltda",
+              "cnpj": "15.345.678/0001-90",
+              "endereco": "Rua da Tecnologia, 789"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/3
+        name: Update
+        meta:
+          id: req_a9172b2c06da43b788b539fdead8284e
+          created: 1744378984953
+          modified: 1744379214890
+          isPrivate: false
+          sortKey: -1744378984953
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "TechCorp",
+              "empresa": "TechCorp Inovações Ltda",
+              "cnpj": "17.345.678/0001-90",
+              "endereco": "Avenida da Tecnologia, 1000"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/3
+        name: Delete
+        meta:
+          id: req_0f6a40b4773642109f405594311b8b38
+          created: 1744379011216
+          modified: 1744379330819
+          isPrivate: false
+          sortKey: -1744379011216
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Palestrante
+    meta:
+      id: fld_e8db5b2ab7734a5da7dd2505da7a86d0
+      created: 1744379410162
+      modified: 1744379421642
+      sortKey: -1744379410163
+    children:
+      - url: http://localhost:3333/palestrante/3
+        name: Delete
+        meta:
+          id: req_514c0d7872664321b33ad84ea6c8654b
+          created: 1744379446848
+          modified: 1744379570429
+          isPrivate: false
+          sortKey: -1744379462581
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante/3
+        name: Update
+        meta:
+          id: req_b0b26e63f10641828a2a3297443c2d74
+          created: 1744379472413
+          modified: 1744379556480
+          isPrivate: false
+          sortKey: -1744379462681
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Dr. João Santos",
+              "email": "joao.santos@email.com",
+              "especialidade": "Inteligência Artificial e Machine Learning",
+              "nome_palestra": "O Futuro da IA na Indústria 4.0"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante
+        name: Create
+        meta:
+          id: req_ab773f39f36c47cd9e5452afb8fa00eb
+          created: 1744379480266
+          modified: 1744379529660
+          isPrivate: false
+          sortKey: -1744379462781
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Dr. João Santos",
+              "email": "joao2@email.com",
+              "especialidade": "Inteligência Artificial",
+              "nome_palestra": "O Futuro da IA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante/1
+        name: Listar Por ID
+        meta:
+          id: req_6bba970288f94470aef3e97a83542427
+          created: 1744379485425
+          modified: 1744379509311
+          isPrivate: false
+          sortKey: -1744379462881
+        method: GET
+        parameters:
+          - id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante
+        name: Listar Todos
+        meta:
+          id: req_b3f05e5284554bd98a89d09950d5c3ed
+          created: 1744379490039
+          modified: 1744379500324
+          isPrivate: false
+          sortKey: -1744379462981
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_81f733336897909d5891c71c4cdec271217d9dcc
+    created: 1744378829709
+    modified: 1744378829709
+environments:
+  name: Base Environment
+  meta:
+    id: env_81f733336897909d5891c71c4cdec271217d9dcc
+    created: 1744378829707
+    modified: 1744378829707
+    isPrivate: false
