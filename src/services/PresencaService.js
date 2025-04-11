@@ -28,7 +28,6 @@ class PresencaService {
   static async create(req, res) {
     const { data, horario, tipo_presenca, modo_registro, participante_id, evento_id } = req.body;
 
-    // Validação: formato do horário (HH:MM)
     const horarioRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
     if (!horarioRegex.test(horario)) {
       throw new Error("Horário deve estar no formato HH:MM");
@@ -50,13 +49,11 @@ class PresencaService {
     const { id } = req.params;
     const { data, horario, tipo_presenca, modo_registro, participante_id, evento_id } = req.body;
     
-    // Validação: presença existe?
     var obj = await Presenca.findOne({ where: { id: id } });
     if (!obj) {
       throw new Error("Presença não encontrada");
     }
     
-    // Validação: formato do horário (HH:MM)
     const horarioRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
     if (!horarioRegex.test(horario)) {
       throw new Error("Horário deve estar no formato HH:MM");

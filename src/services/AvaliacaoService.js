@@ -28,7 +28,6 @@ class AvaliacaoService {
   static async create(req, res) {
     const { nota, comentarios, data_avaliacao, participante, participante_id, evento_id } = req.body;
 
-    // Validação adicional: nota entre 0 e 5
     if (nota < 0 || nota > 5) {
       throw new Error("A nota deve estar entre 0 e 5");
     }
@@ -49,8 +48,7 @@ class AvaliacaoService {
     const { id } = req.params;
     const { nota, comentarios, data_avaliacao, participante, participante_id, evento_id } = req.body;
     
-    // Validação adicional: nota entre 0 e 10
-    if (nota < 0 || nota > 10) {
+    if (nota < 0 || nota > 5) {
       throw new Error("A nota deve estar entre 0 e 5");
     }
     

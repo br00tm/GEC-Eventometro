@@ -14,7 +14,6 @@ const sequelize = new Sequelize({
     storage: 'database.sqlite'
 });
 
-// Inicialização dos modelos
 Local.init(sequelize);
 Evento.init(sequelize);
 Avaliacao.init(sequelize);
@@ -25,7 +24,7 @@ Participante.init(sequelize);
 Certificado.init(sequelize);
 Presenca.init(sequelize);
 
-// Associações entre os modelos
+
 const models = {
     Local,
     Evento,
@@ -42,11 +41,9 @@ Object.values(models)
     .filter(model => typeof model.associate === 'function')
     .forEach(model => model.associate(models));
 
-// Dados de exemplo
 (async () => {
     await sequelize.sync({ force: true });
     
-    // Criar locais
     const local1 = await Local.create({
         nome: "Centro de Convenções", 
         uf: "SP", 
@@ -79,7 +76,6 @@ Object.values(models)
         lotacao: 1500
     });
     
-    // Criar participantes
     const participante1 = await Participante.create({
         nome: "Carlos Silva", 
         email: "carlos@email.com", 
@@ -108,7 +104,6 @@ Object.values(models)
         endereco: "Rua dos Pampas, 321"
     });
     
-    // Criar palestrantes
     const palestrante1 = await Palestrante.create({
         nome: "Dr. João Santos", 
         email: "joao@email.com", 
@@ -137,7 +132,6 @@ Object.values(models)
         nome_palestra: "Segurança na Era Digital"
     });
     
-    // Criar patrocinadores
     const patrocinador1 = await Patrocinador.create({
         nome: "TechCorp", 
         empresa: "TechCorp Ltda", 
@@ -166,7 +160,6 @@ Object.values(models)
         endereco: "Av da Segurança, 789"
     });
     
-    // Criar funcionários
     const funcionario1 = await Funcionario.create({
         nome: "Pedro Almeida", 
         cargo: "Coordenador de Eventos", 
@@ -195,7 +188,6 @@ Object.values(models)
         carga_horaria: 40.0
     });
     
-    // Criar avaliações
     const avaliacao1 = await Avaliacao.create({
         nota: 3.5, 
         comentarios: "Evento excelente!", 
@@ -228,7 +220,6 @@ Object.values(models)
         participante_id: participante4.id
     });
     
-    // Criar eventos
     const evento1 = await Evento.create({
         nome: "Conferência de Tecnologia 2023", 
         data: "2023-11-20", 
@@ -257,7 +248,6 @@ Object.values(models)
         avaliacao_id: avaliacao4.id
     });
     
-    // Associar palestrantes a eventos - usando a tabela de junção
     await sequelize.query(
         `INSERT INTO evento_palestrante (eventoId, palestranteId, createdAt, updatedAt) 
          VALUES (${evento1.id}, ${palestrante1.id}, datetime('now'), datetime('now'))`
@@ -283,7 +273,6 @@ Object.values(models)
          VALUES (${evento4.id}, ${palestrante4.id}, datetime('now'), datetime('now'))`
     );
     
-    // Associar patrocinadores a eventos - usando a tabela de junção
     await sequelize.query(
         `INSERT INTO evento_patrocinador (eventoId, patrocinadorId, createdAt, updatedAt) 
          VALUES (${evento1.id}, ${patrocinador1.id}, datetime('now'), datetime('now'))`
@@ -304,7 +293,6 @@ Object.values(models)
          VALUES (${evento4.id}, ${patrocinador4.id}, datetime('now'), datetime('now'))`
     );
     
-    // Associar funcionários a eventos - usando a tabela de junção
     await sequelize.query(
         `INSERT INTO evento_funcionario (eventoId, funcionarioId, createdAt, updatedAt) 
          VALUES (${evento1.id}, ${funcionario1.id}, datetime('now'), datetime('now'))`
@@ -325,7 +313,6 @@ Object.values(models)
          VALUES (${evento4.id}, ${funcionario3.id}, datetime('now'), datetime('now'))`
     );
     
-    // Criar certificados
     const certificado1 = await Certificado.create({
         nome: "Certificado de Participação - Conferência de Tecnologia 2023", 
         data_emissao: "2023-11-21", 
@@ -358,7 +345,6 @@ Object.values(models)
         participante_id: participante4.id
     });
     
-    // Criar presenças
     const presenca1 = await Presenca.create({
         data: "2023-11-20", 
         horario: "09:00", 

@@ -35,7 +35,6 @@ class Funcionario extends Model {
   }
 
   static associate(models) {
-    // Associações removidas conforme solicitado
   }
 }
 
