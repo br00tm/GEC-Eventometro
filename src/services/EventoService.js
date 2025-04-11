@@ -25,7 +25,16 @@ class EventoService {
 
   static async create(req, res) {
     const { nome, data, local_id } = req.body;
-
+  
+    // Coletar todos os erros
+    let errors = [];
+  
+    // Validação: formato da data
+    const dataRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dataRegex.test(data)) {
+      errors.push("Data do Evento deve seguir o padrão yyyy-MM-dd");
+    }
+  
     // Regra de negócio: não podem existir dois eventos com o mesmo nome na mesma data
     const objDuplicado = await Evento.findAll({
       where: {
@@ -35,9 +44,25 @@ class EventoService {
     });
     
     if (objDuplicado.length > 0) {
-      throw new Error("Já existe um Evento com este nome nesta data");
+      errors.push("Já existe um Evento com este nome nesta data");
     }
-
+  
+    // Validação do local_id
+    const localExiste = await Local.findByPk(local_id);
+    if (!localExiste) {
+      errors.push("Local não encontrado");
+    }
+  
+    // Validação do nome
+    if (!nome || nome.length < 3) {
+      errors.push("Nome do evento deve ter pelo menos 3 caracteres");
+    }
+  
+    // Se tiver erros, lança todos juntos
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+  
     const t = await sequelize.transaction();
     try {
       const obj = await Evento.create({ nome, data, local_id }, { transaction: t });

@@ -15,13 +15,42 @@ class LocalService {
 
   static async create(req, res) {
     const { nome, uf, cidade, bairro, lotacao } = req.body;
-
+  
+    // Coletar todos os erros
+    let errors = [];
+  
     // Regra de negócio: não podem existir dois local com o mesmo nome
     const objByNome = await Local.findAll({where : {nome: nome}});
-    if (objByNome.length == 1){
-      throw new Error ("Já existe um Local com este nome");
+    if (objByNome.length == 1) {
+      errors.push("Já existe um Local com este nome");
     }
-
+    
+    // Validação de UF
+    const ufRegex = /^[A-Z]{2}$/;
+    if (!ufRegex.test(uf)) {
+      errors.push("UF deve ser válida (2 letras)");
+    }
+    
+    // Validação da cidade
+    if (!cidade || cidade.length < 2) {
+      errors.push("Nome da cidade deve ter pelo menos 2 caracteres");
+    }
+    
+    // Validação do bairro
+    if (!bairro || bairro.length < 2) {
+      errors.push("Nome do bairro deve ter pelo menos 2 caracteres");
+    }
+    
+    // Validação da lotação
+    if (lotacao < 500) {
+      errors.push("Lotação deve ser no mínimo 500");
+    }
+    
+    // Se tiver erros, lança todos juntos
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+  
     const obj = await Local.create({ nome, uf, cidade, bairro, lotacao });
     return obj;
   }

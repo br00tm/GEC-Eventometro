@@ -15,19 +15,37 @@ class ParticipanteService {
 
   static async create(req, res) {
     const { nome, email, telefone, endereco } = req.body;
-
+  
+    // Coletar todos os erros
+    let errors = [];
+  
     // Validação: email único
     const participanteExistente = await Participante.findOne({ where: { email: email } });
     if (participanteExistente) {
-      throw new Error("Já existe um participante cadastrado com este email");
+      errors.push("Já existe um participante cadastrado com este email");
     }
     
     // Validação: formato do telefone
     const telefoneRegex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
     if (!telefoneRegex.test(telefone)) {
-      throw new Error("Telefone deve estar no formato (99) 99999-9999");
+      errors.push("Telefone deve estar no formato (99) 99999-9999");
     }
-
+  
+    // Validação do nome
+    if (!nome || nome.length < 2) {
+      errors.push("Nome deve ter pelo menos 2 caracteres");
+    }
+  
+    // Validação do endereço
+    if (!endereco || endereco.trim() === "") {
+      errors.push("Endereço não pode ser vazio");
+    }
+  
+    // Se tiver erros, lança todos juntos
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+  
     const obj = await Participante.create({ nome, email, telefone, endereco });
     return obj;
   }
