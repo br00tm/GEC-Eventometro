@@ -1,0 +1,985 @@
+type: collection.insomnia.rest/5.0
+name: GEC-Eventometro
+meta:
+  id: wrk_f2674cf29b5f40789b2cfd4e7ade113a
+  created: 1744377556624
+  modified: 1744377556624
+collection:
+  - name: Local
+    meta:
+      id: fld_fdc71eba5fe648c39879c188ad0c90a8
+      created: 1744377967188
+      modified: 1744378409264
+      sortKey: -1744377967188
+    children:
+      - url: http://localhost:3333/local
+        name: Local Todos
+        meta:
+          id: req_106c180d5bc54aea96d3c92c402b38dd
+          created: 1744377581599
+          modified: 1744377974260
+          isPrivate: false
+          sortKey: -1744377972394
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local/1
+        name: Local ID
+        meta:
+          id: req_db970dff3990408ebf24560128dada32
+          created: 1744377804488
+          modified: 1744379114716
+          isPrivate: false
+          sortKey: -1744377972369
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local
+        name: Local Create Correto
+        meta:
+          id: req_2a557a61d43243e0ab8dc0bca67ed538
+          created: 1744377830041
+          modified: 1744378327057
+          isPrivate: false
+          sortKey: -1744377972344
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Centro de Eventos Tecnológicos",
+              "uf": "MG",
+              "cidade": "Belo Horizonte",
+              "bairro": "Savassi",
+              "lotacao": 1500
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local/3
+        name: Local Delete
+        meta:
+          id: req_9c621d13223c476da5c76dd7a129a445
+          created: 1744377927732
+          modified: 1744379096962
+          isPrivate: false
+          sortKey: -1744377972144
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local/3
+        name: Local Update
+        meta:
+          id: req_4a36320100d44ca39b7083bbd95de57d
+          created: 1744378058488
+          modified: 1744379107953
+          isPrivate: false
+          sortKey: -1744377972194
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Centro de Eventos Tecnológicos",
+              "uf": "MG",
+              "cidade": "Belo Horizonte",
+              "bairro": "Funcionários",
+              "lotacao": 5000
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local
+        name: Local Create Errado
+        meta:
+          id: req_cd83dfc5d1c94eb7a9b5a467e55ef46f
+          created: 1744378314864
+          modified: 1744379086046
+          isPrivate: false
+          sortKey: -1744377972244
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Centro de Convenções",
+              "uf": "XX",
+              "cidade": "S",
+              "bairro": "C",
+              "lotacao": 200
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Evento
+    meta:
+      id: fld_6ac88f775c7f4ba68bd43f3da562a1ce
+      created: 1744378428888
+      modified: 1744378428888
+      sortKey: -1744377967138
+    children:
+      - url: http://localhost:3333/evento
+        name: Evento Todos
+        meta:
+          id: req_d0220f7ff58c4f96a7f037ac80686dec
+          created: 1744378428889
+          modified: 1744378481493
+          isPrivate: false
+          sortKey: -1744377972844
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento/1
+        name: Evento ID
+        meta:
+          id: req_8a9e87d30bde416eb9aa459b0c0dd905
+          created: 1744378428891
+          modified: 1744378479798
+          isPrivate: false
+          sortKey: -1744377972744
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento
+        name: Local Create Correto
+        meta:
+          id: req_c988585b7de646f58daf122cae3ce6d3
+          created: 1744378428893
+          modified: 1744378595120
+          isPrivate: false
+          sortKey: -1744377972694
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Hackathon de Inovação",
+              "data": "2023-10-25",
+              "local_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento/3
+        name: Local Delete
+        meta:
+          id: req_ff3315b6b49e419893e847e61c2e01ca
+          created: 1744378428894
+          modified: 1744378668687
+          isPrivate: false
+          sortKey: -1744377972544
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento/3
+        name: Local Update
+        meta:
+          id: req_2cad80fda3144e22b09011540de29fcf
+          created: 1744378428895
+          modified: 1744378656153
+          isPrivate: false
+          sortKey: -1744377972644
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Hackathon de Inovação e Tecnologia",
+              "data": "2023-11-05",
+              "local_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/local
+        name: Local Create Errado
+        meta:
+          id: req_332ebcda158048318be844e7e4494e40
+          created: 1744378428896
+          modified: 1744378615518
+          isPrivate: false
+          sortKey: -1744377972669
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Conferência de Tecnologia 2023",
+              "data": "25/10/2023",
+              "local_id": 99
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Participante
+    meta:
+      id: fld_0e3395a0482749d7a4f2bbf74c2592f1
+      created: 1744378686036
+      modified: 1744378686036
+      sortKey: -1744377967088
+    children:
+      - url: http://localhost:3333/participante
+        name: Participante Todos
+        meta:
+          id: req_c3fd9848d0a1406ca36437ba2a6d1b1a
+          created: 1744378686037
+          modified: 1744378703241
+          isPrivate: false
+          sortKey: -1744377972844
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/participante/1
+        name: Participante ID
+        meta:
+          id: req_26f58773c56d44bf89cb684dbe9a3db0
+          created: 1744378686038
+          modified: 1744378715161
+          isPrivate: false
+          sortKey: -1744377972744
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/participante
+        name: Participante Create Correto
+        meta:
+          id: req_bac4703dfa624c58b0cacedd36596c81
+          created: 1744378686040
+          modified: 1744378756036
+          isPrivate: false
+          sortKey: -1744377972694
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Roberto Santos",
+              "email": "robertosss@email.com",
+              "telefone": "(31) 94567-8901",
+              "endereco": "Av Paulista, 789"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento/3
+        name: Local Delete
+        meta:
+          id: req_1d99061b067e479883f53c1cdc7ff7b6
+          created: 1744378686041
+          modified: 1744378686041
+          isPrivate: false
+          sortKey: -1744377972544
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/participante/3
+        name: Local Update
+        meta:
+          id: req_fd14e4db79f146759adcf01b0139011f
+          created: 1744378686042
+          modified: 1744379015376
+          isPrivate: false
+          sortKey: -1744377972644
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Hackathon de Inovação e Tecnologia",
+              "data": "2023-11-05",
+              "local_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/participante
+        name: Participante Create Errado
+        meta:
+          id: req_fae047c8459047c0b0d6c160c041ed31
+          created: 1744378686043
+          modified: 1744379060946
+          isPrivate: false
+          sortKey: -1744377972669
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "J",
+              "email": "carlos@email.com",
+              "telefone": "11987654321",
+              "endereco": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Patrocinador
+    meta:
+      id: fld_79fb1a19a5d243b289175bf54c9cd064
+      created: 1744378916803
+      modified: 1744379423082
+      sortKey: -1744378916803
+    children:
+      - url: http://localhost:3333/patrocinador
+        name: Patrocinador Todos
+        meta:
+          id: req_e02b3b3a936d49caa34f7fcb7ed6c3f0
+          created: 1744378924324
+          modified: 1744380371585
+          isPrivate: false
+          sortKey: -1744379011316
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/1
+        name: Patrocinador ID
+        meta:
+          id: req_f26e7b83f6854b459fce1389c8180d43
+          created: 1744378946175
+          modified: 1744380376078
+          isPrivate: false
+          sortKey: -1744379011266
+        method: GET
+        parameters:
+          - disabled: false
+            id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador
+        name: Patrocinador Create
+        meta:
+          id: req_e543373679074bb48bee09a49fd67340
+          created: 1744378953229
+          modified: 1744380378842
+          isPrivate: false
+          sortKey: -1744379011241
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "TechCorp",
+              "empresa": "TechCorp Ltda",
+              "cnpj": "15.345.678/0001-90",
+              "endereco": "Rua da Tecnologia, 789"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/3
+        name: Patrocinador Update
+        meta:
+          id: req_9a61be18ae9d468aadefe8c978dfdede
+          created: 1744378984953
+          modified: 1744380384552
+          isPrivate: false
+          sortKey: -1744378984953
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "TechCorp",
+              "empresa": "TechCorp Inovações Ltda",
+              "cnpj": "17.345.678/0001-90",
+              "endereco": "Avenida da Tecnologia, 1000"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador/3
+        name: Patrocinador Delete
+        meta:
+          id: req_364919fb27ff4a46899541f9df2a4d10
+          created: 1744379011216
+          modified: 1744380387267
+          isPrivate: false
+          sortKey: -1744378984853
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/patrocinador
+        name: Patrocinador Create Errado
+        meta:
+          id: req_ec3881fadbe34cd09235d4c7f5bce813
+          created: 1744380287096
+          modified: 1744380381855
+          isPrivate: false
+          sortKey: -1744378998097
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "T",
+              "empresa": "",
+              "cnpj": "12345678000190",
+              "endereco": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Funcionario
+    meta:
+      id: fld_daad61792ebf46d6981a612fb4c97bea
+      created: 1744379158738
+      modified: 1744379158738
+      sortKey: -1744377967038
+    children:
+      - url: http://localhost:3333/funcionario
+        name: Funcionario Todos
+        meta:
+          id: req_a56d61efc28d4c04bc3368315d2b4ef6
+          created: 1744379158740
+          modified: 1744379170098
+          isPrivate: false
+          sortKey: -1744377972844
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/funcionario/1
+        name: Funcionario ID
+        meta:
+          id: req_ea6c5909e1ad44869c3b0518b3ff7f08
+          created: 1744379158741
+          modified: 1744379176666
+          isPrivate: false
+          sortKey: -1744377972744
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/funcionario
+        name: Funcionario Create Correto
+        meta:
+          id: req_51abfef4eaa94e1f884fa7854ccf67fc
+          created: 1744379158742
+          modified: 1744379550116
+          isPrivate: false
+          sortKey: -1744377972694
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "L",
+              "cargo": "",
+              "matricula": "FUNC001",
+              "carga_horaria": -10.0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/evento/3
+        name: Funcionario Delete
+        meta:
+          id: req_ab631752e92642f4a99f4b13e2877e74
+          created: 1744379158744
+          modified: 1744379573223
+          isPrivate: false
+          sortKey: -1744377972544
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/Funcionario/3
+        name: Funcionario Update
+        meta:
+          id: req_424ac32c1dfc4442a9bd09925ef8f10f
+          created: 1744379158745
+          modified: 1744379581320
+          isPrivate: false
+          sortKey: -1744377972644
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "José Oliveira",
+              "cargo": "Técnico de Suporte Senior",
+              "matricula": "FUNC003",
+              "carga_horaria": 36.0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/funcionario
+        name: Funcionario Create Errado
+        meta:
+          id: req_56cede708aa24fc7a44dbe2bb8eff46c
+          created: 1744379158746
+          modified: 1744379500511
+          isPrivate: false
+          sortKey: -1744377972669
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "J",
+              "email": "carlos@email.com",
+              "telefone": "11987654321",
+              "endereco": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Palestrante
+    meta:
+      id: fld_84b4e65058814d0e9476883b222122a0
+      created: 1744379410162
+      modified: 1744379421642
+      sortKey: -1744379410163
+    children:
+      - url: http://localhost:3333/palestrante/3
+        name: Palestrante Delete
+        meta:
+          id: req_db74ce0c7f9f4bc785161f1aec6b9419
+          created: 1744379446848
+          modified: 1744380353220
+          isPrivate: false
+          sortKey: -1744379462581
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante/3
+        name: Palestrante Update
+        meta:
+          id: req_abdec4d2a8f54753b6920a75c485b80f
+          created: 1744379472413
+          modified: 1744380348050
+          isPrivate: false
+          sortKey: -1744379462681
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Dr. João Santos",
+              "email": "joao.santos@email.com",
+              "especialidade": "Inteligência Artificial e Machine Learning",
+              "nome_palestra": "O Futuro da IA na Indústria 4.0"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante
+        name: Palestrante Create
+        meta:
+          id: req_6679dac2f713431c993ec892c46e3583
+          created: 1744379480266
+          modified: 1744380324986
+          isPrivate: false
+          sortKey: -1744379462781
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Dr. João Santos",
+              "email": "joao2@email.com",
+              "especialidade": "Inteligência Artificial",
+              "nome_palestra": "O Futuro da IA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante/1
+        name: Palestrante ID
+        meta:
+          id: req_2745e8a3e0d14f639826474a9890f161
+          created: 1744379485425
+          modified: 1744380313631
+          isPrivate: false
+          sortKey: -1744379462881
+        method: GET
+        parameters:
+          - disabled: false
+            id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante
+        name: Palestrante Todos
+        meta:
+          id: req_3f99176ea67e4500aef43c023feac4bb
+          created: 1744379490039
+          modified: 1744380305535
+          isPrivate: false
+          sortKey: -1744379462981
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/palestrante
+        name: Palestrante Create Errado
+        meta:
+          id: req_637926c939a44b1d9d39d92b5f570bc3
+          created: 1744380116700
+          modified: 1744380332385
+          isPrivate: false
+          sortKey: -1744379462731
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "D",
+              "email": "joao@email.com",
+              "especialidade": "",
+              "nome_palestra": "B"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_47295957e545d1e208070e8c01aebd6e4eb8c9c6
+    created: 1744377556629
+    modified: 1744377556629
+environments:
+  name: Base Environment
+  meta:
+    id: env_47295957e545d1e208070e8c01aebd6e4eb8c9c6
+    created: 1744377556626
+    modified: 1744377556626
+    isPrivate: false
