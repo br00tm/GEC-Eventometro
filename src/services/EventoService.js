@@ -1,6 +1,6 @@
 import { Evento } from "../models/Evento.js";
 import { Local } from "../models/Local.js";
-import { sequelize } from "../config/config.js";
+import  sequelize  from "../config/database.js";
 //PEDRO GOMES
 class EventoService {
   
