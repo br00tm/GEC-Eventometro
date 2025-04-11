@@ -15,19 +15,42 @@ class PatrocinadorService {
 
   static async create(req, res) {
     const { nome, empresa, cnpj, endereco } = req.body;
-
+  
+    // Coletar todos os erros
+    let errors = [];
+  
     // Validação: CNPJ único
     const patrocinadorExistente = await Patrocinador.findOne({ where: { cnpj: cnpj } });
     if (patrocinadorExistente) {
-      throw new Error("Já existe um patrocinador cadastrado com este CNPJ");
+      errors.push("Já existe um patrocinador cadastrado com este CNPJ");
     }
-    
-    // Validação: formato do CNPJ
-    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;
+  
+    // Validação do formato do CNPJ
+    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
     if (!cnpjRegex.test(cnpj)) {
-      throw new Error("CNPJ deve estar no formato XX.XXX.XXX/XXXX-XX");
+      errors.push("CNPJ deve estar no formato XX.XXX.XXX/XXXX-XX");
     }
-
+  
+    // Validação do nome
+    if (!nome || nome.length < 2) {
+      errors.push("Nome deve ter pelo menos 2 caracteres");
+    }
+  
+    // Validação da empresa
+    if (!empresa || empresa.trim() === "") {
+      errors.push("Empresa não pode ser vazia");
+    }
+  
+    // Validação do endereço
+    if (!endereco || endereco.trim() === "") {
+      errors.push("Endereço não pode ser vazio");
+    }
+  
+    // Se tiver erros, lança todos juntos
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+  
     const obj = await Patrocinador.create({ nome, empresa, cnpj, endereco });
     return obj;
   }
