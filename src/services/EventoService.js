@@ -1,6 +1,6 @@
 import { Evento } from "../models/Evento.js";
 import { Local } from "../models/Local.js";
-
+//PEDRO GOMES
 class EventoService {
   
   static async findAll(req, res) {

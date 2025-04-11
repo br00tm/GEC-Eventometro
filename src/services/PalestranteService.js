@@ -1,5 +1,5 @@
 import { Palestrante } from "../models/Palestrante.js";
-
+//PEDRO BRITO
 class PalestranteService {
   
   static async findAll(req, res) {

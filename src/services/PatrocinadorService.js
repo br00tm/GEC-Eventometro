@@ -1,5 +1,5 @@
 import { Patrocinador } from "../models/Patrocinador.js";
-
+//PEDRO BRITO
 class PatrocinadorService {
   
   static async findAll(req, res) {

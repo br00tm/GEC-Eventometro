@@ -1,7 +1,7 @@
 import { Avaliacao } from "../models/Avaliacao.js";
 import { Participante } from "../models/Participante.js";
 import { Evento } from "../models/Evento.js";
-
+//PEDRO GOMES
 class AvaliacaoService {
   
   static async findAll(req, res) {
@@ -30,7 +30,7 @@ class AvaliacaoService {
 
     // Validação adicional: nota entre 0 e 5
     if (nota < 0 || nota > 5) {
-      throw new Error("A nota deve estar entre 0 e 10");
+      throw new Error("A nota deve estar entre 0 e 5");
     }
 
     const obj = await Avaliacao.create({ 
@@ -51,7 +51,7 @@ class AvaliacaoService {
     
     // Validação adicional: nota entre 0 e 10
     if (nota < 0 || nota > 10) {
-      throw new Error("A nota deve estar entre 0 e 10");
+      throw new Error("A nota deve estar entre 0 e 5");
     }
     
     var obj = await Avaliacao.findOne({ where: { id: id } });

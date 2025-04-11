@@ -1,5 +1,5 @@
 import { Participante } from "../models/Participante.js";
-
+//PEDRO BRITO
 class ParticipanteService {
   
   static async findAll(req, res) {

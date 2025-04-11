@@ -1,5 +1,5 @@
 import { Funcionario } from "../models/Funcionario.js";
-
+//MATEUS DE ANGELI
 class FuncionarioService {
   
   static async findAll(req, res) {
