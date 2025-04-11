@@ -61,13 +61,17 @@ class FuncionarioService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Funcionario.findByPk(id);
+    const obj = await Funcionario.findByPk(id);
     if (!obj) {
       throw new Error("Funcionário não encontrado");
     }
     
-    obj = await obj.destroy();
-    return obj;
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este funcionário");
+    }
   }
 }
 
