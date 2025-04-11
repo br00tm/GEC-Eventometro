@@ -63,13 +63,17 @@ class ParticipanteService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Participante.findByPk(id);
+    const obj = await Participante.findByPk(id);
     if (!obj) {
       throw new Error("Participante não encontrado");
     }
     
-    obj = await obj.destroy();
-    return obj;
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este participante");
+    }
   }
 }
 

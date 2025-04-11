@@ -63,13 +63,17 @@ class PatrocinadorService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Patrocinador.findByPk(id);
+    const obj = await Patrocinador.findByPk(id);
     if (!obj) {
       throw new Error("Patrocinador não encontrado");
     }
     
-    obj = await obj.destroy();
-    return obj;
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este patrocinador");
+    }
   }
 }
 

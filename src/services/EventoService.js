@@ -1,5 +1,6 @@
 import { Evento } from "../models/Evento.js";
 import { Local } from "../models/Local.js";
+import { sequelize } from "../config/config.js";
 //PEDRO GOMES
 class EventoService {
   
@@ -37,8 +38,15 @@ class EventoService {
       throw new Error("Já existe um Evento com este nome nesta data");
     }
 
-    const obj = await Evento.create({ nome, data, local_id });
-    return obj;
+    const t = await sequelize.transaction();
+    try {
+      const obj = await Evento.create({ nome, data, local_id }, { transaction: t });
+      await t.commit();
+      return await Evento.findByPk(obj.id, { include: { all: true, nested: true }});
+    } catch (error) {
+      await t.rollback();
+      throw error;
+    }
   }
 
   static async update(req, res) {
@@ -57,13 +65,17 @@ class EventoService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Evento.findByPk(id);
+    const obj = await Evento.findByPk(id);
     if (!obj) {
       throw new Error("Evento não encontrado");
     }
     
-    obj = await obj.destroy();
-    return obj;
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este evento");
+    }
   }
 }
 

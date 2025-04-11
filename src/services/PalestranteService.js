@@ -1,5 +1,5 @@
 import { Palestrante } from "../models/Palestrante.js";
-//PEDRO BRITO
+//MATEUS DE ANGELI
 class PalestranteService {
   
   static async findAll(req, res) {
@@ -51,13 +51,17 @@ class PalestranteService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Palestrante.findByPk(id);
+    const obj = await Palestrante.findByPk(id);
     if (!obj) {
       throw new Error("Palestrante não encontrado");
     }
     
-    obj = await obj.destroy();
-    return obj;
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este palestrante");
+    }
   }
 }
 

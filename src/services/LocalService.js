@@ -37,11 +37,18 @@ class LocalService {
 
   static async delete(req, res) {
     const { id } = req.params;
-    var obj = await Local.findByPk(id);
-    obj = await obj.destroy();
-    return obj;
+    const obj = await Local.findByPk(id);
+    if (!obj) {
+      throw new Error("Local não encontrado");
+    }
+    
+    try {
+      await obj.destroy();
+      return obj;
+    } catch (error) {
+      throw new Error("Não foi possível remover este local");
+    }
   }
-
 }
 
 export { LocalService };
