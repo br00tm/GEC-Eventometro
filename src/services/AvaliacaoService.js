@@ -1,4 +1,4 @@
-//MATEUS DE ANGELI
+//PEDRO GOMES
 
 import { Avaliacao } from "../models/Avaliacao.js";
 import { Participante } from "../models/Participante.js";
@@ -7,7 +7,7 @@ import { Presenca } from "../models/Presenca.js";
 import sequelize from '../config/database.js';
 import { QueryTypes } from 'sequelize';
 
-//PEDRO GOMES
+
 class AvaliacaoService {
   
   static async findAll(req, res) {

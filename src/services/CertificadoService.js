@@ -133,11 +133,11 @@ class CertificadoService {
       // Se passou por todas as validações, cria o certificado
       const t = await sequelize.transaction();
       try {
-        const obj = await Certificado.create({ 
-          nome, 
-          data_emissao, 
-          cod_validacao, 
-          tipo_certificado,
+    const obj = await Certificado.create({ 
+      nome, 
+      data_emissao, 
+      cod_validacao, 
+      tipo_certificado,
           descricao,
           participante_id: participante.id, 
           evento_id: evento.id 
@@ -281,11 +281,11 @@ class CertificadoService {
       // Se passou por todas as validações, atualiza o certificado
       const t = await sequelize.transaction();
       try {
-        Object.assign(obj, { 
-          nome, 
-          data_emissao, 
-          cod_validacao, 
-          tipo_certificado, 
+    Object.assign(obj, { 
+      nome, 
+      data_emissao, 
+      cod_validacao, 
+      tipo_certificado,
           descricao,
           participante_id: participante.id, 
           evento_id: evento.id 
