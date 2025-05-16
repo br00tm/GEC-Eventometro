@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificado - Mariana Oliveira</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    .certificado-container {
+      width: 1000px;
+      height: 700px;
+      margin: 20px auto;
+      background-color: white;
+      background-image: url('/assets/fundo_certificado.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 10px solid #d4af37;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      color: #333;
+    }
+    .certificado-titulo {
+      font-size: 48px;
+      color: #333;
+      margin-top: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .certificado-subtitulo {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .certificado-nome {
+      font-size: 36px;
+      margin: 30px 0;
+      font-weight: bold;
+      color: #000;
+    }
+    .certificado-texto {
+      font-size: 20px;
+      margin: 20px 60px;
+      line-height: 1.5;
+    }
+    .certificado-descricao {
+      font-size: 18px;
+      font-style: italic;
+      margin: 30px 80px;
+    }
+    .certificado-footer {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      left: 0;
+      text-align: center;
+    }
+    .certificado-assinatura {
+      margin: 20px auto;
+      width: 200px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      font-weight: bold;
+    }
+    .certificado-cargo {
+      font-size: 16px;
+    }
+    .certificado-validacao {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      font-size: 12px;
+    }
+    .certificado-data {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      font-size: 12px;
+    }
+    @media print {
+      body {
+        background-color: white;
+      }
+      .certificado-container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+      }
+      .botoes-controle {
+        display: none;
+      }
+    }
+    .botoes-controle {
+      text-align: center;
+      margin: 20px;
+    }
+    .botao {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0 5px;
+    }
+    .botao:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="botoes-controle">
+    <button class="botao" onclick="window.print()">Imprimir / Salvar PDF</button>
+    <button class="botao" onclick="window.history.back()">Voltar</button>
+  </div>
+
+  <div class="certificado-container">
+    <div class="certificado-titulo">Certificado</div>
+    <div class="certificado-subtitulo">DE PARTICIPAÇÃO</div>
+    
+    <div class="certificado-nome">Mariana Oliveira</div>
+    
+    <div class="certificado-texto">
+      Certificamos que o participante acima concluiu com sucesso o evento 
+      <strong>"Conferência de Tecnologia 2023"</strong> realizado em 19/11/2023.
+    </div>
+    
+    <div class="certificado-descricao">
+      undefined
+    </div>
+    
+    <div class="certificado-footer">
+      <div class="certificado-assinatura">Prof. Dr. João Silva</div>
+      <div class="certificado-cargo">Diretor do Evento</div>
+    </div>
+    
+    <div class="certificado-validacao">
+      Código de validação: 123456
+    </div>
+    
+    <div class="certificado-data">
+      Emitido em: 19/12/2023
+    </div>
+  </div>
+</body>
+</html>
