@@ -1,21 +1,21 @@
 type: collection.insomnia.rest/5.0
-name: GEC-Eventometro
+name: Correto
 meta:
-  id: wrk_f2674cf29b5f40789b2cfd4e7ade113a
-  created: 1744377556624
-  modified: 1744377556624
+  id: wrk_db9975074f4546088d821b485c3de2ea
+  created: 1747395336058
+  modified: 1747402522331
 collection:
   - name: Local
     meta:
-      id: fld_c68ad0ceea974a469970b8b0c44ecdde
+      id: fld_f4a80d3447eb49ecbdcb5644e83b6bba
       created: 1744377967188
-      modified: 1744378409264
+      modified: 1747395358095
       sortKey: -1744377967188
     children:
       - url: http://localhost:3333/local
         name: Local Todos
         meta:
-          id: req_b7312dfe1e9c489897d196237125db1c
+          id: req_34b3be455b1f4a9dad33a6eeb8dd9a25
           created: 1744377581599
           modified: 1744377974260
           isPrivate: false
@@ -35,7 +35,7 @@ collection:
       - url: http://localhost:3333/local/1
         name: Local ID
         meta:
-          id: req_85187a667c244c53a3c73ddae6df3ab6
+          id: req_b2fdf34c9f4a45ed995fd57da33ea9d4
           created: 1744377804488
           modified: 1744379114716
           isPrivate: false
@@ -55,7 +55,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Correto
         meta:
-          id: req_e9d7982c5c1846cbaab952e738cd5375
+          id: req_8dad9a17bc3b449582f24c0b086a94ff
           created: 1744377830041
           modified: 1744378327057
           isPrivate: false
@@ -87,7 +87,7 @@ collection:
       - url: http://localhost:3333/local/3
         name: Local Delete
         meta:
-          id: req_a668807fadf54e279cb41a1b5c1efedf
+          id: req_5ce5b01bc16a4dabb7a997bb6fd0802c
           created: 1744377927732
           modified: 1744379096962
           isPrivate: false
@@ -107,7 +107,7 @@ collection:
       - url: http://localhost:3333/local/3
         name: Local Update
         meta:
-          id: req_adfd95af7c884388aafa741ae95a9390
+          id: req_67a8c57228e14a5098c30845d7b00d6d
           created: 1744378058488
           modified: 1744379107953
           isPrivate: false
@@ -139,7 +139,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Errado
         meta:
-          id: req_13d8834449694f20918bb5f5eb1afa13
+          id: req_23807a50584b4145923524b61ca6d4be
           created: 1744378314864
           modified: 1744379086046
           isPrivate: false
@@ -170,7 +170,7 @@ collection:
           rebuildPath: true
   - name: Evento
     meta:
-      id: fld_a0c7806f22ab4014a585182a0e498e83
+      id: fld_957cfcbf8509428e9733b8968cb44990
       created: 1744378428888
       modified: 1744378428888
       sortKey: -1744377967138
@@ -178,7 +178,7 @@ collection:
       - url: http://localhost:3333/evento
         name: Evento Todos
         meta:
-          id: req_e9bfe00155a142a1b5e2c23b3c73e457
+          id: req_5aebb1f2cda242209c8fdacc263707e8
           created: 1744378428889
           modified: 1744378481493
           isPrivate: false
@@ -198,9 +198,9 @@ collection:
       - url: http://localhost:3333/evento/1
         name: Evento ID
         meta:
-          id: req_e9ffbabd66ff40ad91671686001cfcf4
+          id: req_57266d88c60c4ba2be1055f7f8df7b95
           created: 1744378428891
-          modified: 1746795900490
+          modified: 1744378479798
           isPrivate: false
           sortKey: -1744377972744
         method: GET
@@ -218,9 +218,9 @@ collection:
       - url: http://localhost:3333/evento
         name: Local Create Correto
         meta:
-          id: req_6fdfcca88e7248d6af4c2eddc08db03d
+          id: req_597745fb69c04ffbba76ee9a4073a5a9
           created: 1744378428893
-          modified: 1746795990737
+          modified: 1744378595120
           isPrivate: false
           sortKey: -1744377972694
         method: POST
@@ -228,7 +228,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "nome": "Hackathon",
+              "nome": "Hackathon de Inovação",
               "data": "2023-10-25",
               "local_id": 1
             }
@@ -248,7 +248,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Delete
         meta:
-          id: req_f759827895444d0eb0edd6c17cd1e188
+          id: req_c66e5a2fbcbb4be28225093b348ca6a4
           created: 1744378428894
           modified: 1744378668687
           isPrivate: false
@@ -268,7 +268,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Update
         meta:
-          id: req_22e6f7e27a6249dc8f87799cbb167ea5
+          id: req_055c03e0344848eeb449a4e695694b5d
           created: 1744378428895
           modified: 1744378656153
           isPrivate: false
@@ -298,7 +298,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Errado
         meta:
-          id: req_87a6fcdc0bd041ea98ffb3bf37c80b55
+          id: req_97f6d83fd249498fb3eb96a2f9399bc0
           created: 1744378428896
           modified: 1744378615518
           isPrivate: false
@@ -327,7 +327,7 @@ collection:
           rebuildPath: true
   - name: Participante
     meta:
-      id: fld_16b88d641841452bb92afddd1b5b520f
+      id: fld_7b7efcf362b7459d8a813e6f4e7c3cbe
       created: 1744378686036
       modified: 1744378686036
       sortKey: -1744377967088
@@ -335,7 +335,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Todos
         meta:
-          id: req_6bcbb4bec95e44659d866d0a8505458f
+          id: req_08512381156840d386a2d672421afd1c
           created: 1744378686037
           modified: 1744378703241
           isPrivate: false
@@ -355,7 +355,7 @@ collection:
       - url: http://localhost:3333/participante/1
         name: Participante ID
         meta:
-          id: req_4019f1c93bee45fb939cb9a98c73c942
+          id: req_ce4427f67a8c4b64ab3099b720be7e2c
           created: 1744378686038
           modified: 1744378715161
           isPrivate: false
@@ -375,7 +375,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Create Correto
         meta:
-          id: req_e6a50d38d505476295bf1eb0401f4ba5
+          id: req_32c90357220545eab5cfc3784481cdf5
           created: 1744378686040
           modified: 1744378756036
           isPrivate: false
@@ -406,7 +406,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Delete
         meta:
-          id: req_0a16aab9960b4389b7575e74f47032bd
+          id: req_f7678ff486794620b972b2fd4409b7fd
           created: 1744378686041
           modified: 1744378686041
           isPrivate: false
@@ -426,7 +426,7 @@ collection:
       - url: http://localhost:3333/participante/3
         name: Local Update
         meta:
-          id: req_73e57cf4ad504a6eb88379442b51f430
+          id: req_047922345bbd44cc92fe798dd70be04e
           created: 1744378686042
           modified: 1744379015376
           isPrivate: false
@@ -456,7 +456,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Create Errado
         meta:
-          id: req_79e784e1aaca49bd950131d6768a367f
+          id: req_67bdd8881b8c4f0b93401b8c907f8884
           created: 1744378686043
           modified: 1744379060946
           isPrivate: false
@@ -486,7 +486,7 @@ collection:
           rebuildPath: true
   - name: Patrocinador
     meta:
-      id: fld_79fb1a19a5d243b289175bf54c9cd064
+      id: fld_bddec4242e294ebeae50d72dd0a7ab36
       created: 1744378916803
       modified: 1744379423082
       sortKey: -1744378916803
@@ -494,7 +494,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Todos
         meta:
-          id: req_e02b3b3a936d49caa34f7fcb7ed6c3f0
+          id: req_e6db5aa2051b4ebc8d51731e58821f50
           created: 1744378924324
           modified: 1744380371585
           isPrivate: false
@@ -514,7 +514,7 @@ collection:
       - url: http://localhost:3333/patrocinador/1
         name: Patrocinador ID
         meta:
-          id: req_f26e7b83f6854b459fce1389c8180d43
+          id: req_12c9084de78548adbd6a3f9e0cd87182
           created: 1744378946175
           modified: 1744380376078
           isPrivate: false
@@ -537,7 +537,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Create
         meta:
-          id: req_e543373679074bb48bee09a49fd67340
+          id: req_3876bb07787a48c8a4ea150585c5071a
           created: 1744378953229
           modified: 1744380378842
           isPrivate: false
@@ -568,7 +568,7 @@ collection:
       - url: http://localhost:3333/patrocinador/3
         name: Patrocinador Update
         meta:
-          id: req_9a61be18ae9d468aadefe8c978dfdede
+          id: req_3cb9600aa0ca441f831d1eab380b7de2
           created: 1744378984953
           modified: 1744380384552
           isPrivate: false
@@ -599,139 +599,7 @@ collection:
       - url: http://localhost:3333/patrocinador/3
         name: Patrocinador Delete
         meta:
-          id: req_364919fb27ff4a46899541f9df2a4d10
-          created: 1744379011216
-          modified: 1744380387267
-          isPrivate: false
-          sortKey: -1744378984853
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - name: Patrocinador
-    meta:
-      id: fld_489bd59d87f54d0dbc42eb6081bab173
-      created: 1744378916803
-      modified: 1744379423082
-      sortKey: -1744378916803
-    children:
-      - url: http://localhost:3333/patrocinador
-        name: Patrocinador Todos
-        meta:
-          id: req_858a3dad06174c7fb7dbc73bee096904
-          created: 1744378924324
-          modified: 1744380371585
-          isPrivate: false
-          sortKey: -1744379011316
-        method: GET
-        headers:
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:3333/patrocinador/1
-        name: Patrocinador ID
-        meta:
-          id: req_057bbe8af19a467da8a3c5a367648289
-          created: 1744378946175
-          modified: 1744380376078
-          isPrivate: false
-          sortKey: -1744379011266
-        method: GET
-        parameters:
-          - disabled: false
-            id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
-        headers:
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:3333/patrocinador
-        name: Patrocinador Create
-        meta:
-          id: req_bf9504a35c4845e4bb6be5f0568f83f6
-          created: 1744378953229
-          modified: 1744380378842
-          isPrivate: false
-          sortKey: -1744379011241
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "nome": "TechCorp",
-              "empresa": "TechCorp Ltda",
-              "cnpj": "15.345.678/0001-90",
-              "endereco": "Rua da Tecnologia, 789"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:3333/patrocinador/3
-        name: Patrocinador Update
-        meta:
-          id: req_be1b85c9a4a942ef80cbb6c67149872c
-          created: 1744378984953
-          modified: 1744380384552
-          isPrivate: false
-          sortKey: -1744378984953
-        method: PUT
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "nome": "TechCorp",
-              "empresa": "TechCorp Inovações Ltda",
-              "cnpj": "17.345.678/0001-90",
-              "endereco": "Avenida da Tecnologia, 1000"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:3333/patrocinador/3
-        name: Patrocinador Delete
-        meta:
-          id: req_b46102447fc94ab0832c36e9032b24cc
+          id: req_c1a554d5664748c1ba270dadd42b8a19
           created: 1744379011216
           modified: 1744380387267
           isPrivate: false
@@ -751,7 +619,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Create Errado
         meta:
-          id: req_00a3da8be884446999d7d0c812839303
+          id: req_12f0eb9b69984341a3983c8b14bcfc15
           created: 1744380287096
           modified: 1744380381855
           isPrivate: false
@@ -781,7 +649,7 @@ collection:
           rebuildPath: true
   - name: Funcionario
     meta:
-      id: fld_206318725cca46cebd39929b5b86480d
+      id: fld_eb8a7ff814d84caea288dfb8c581373c
       created: 1744379158738
       modified: 1744379158738
       sortKey: -1744377967038
@@ -789,7 +657,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Todos
         meta:
-          id: req_1f32e607d20147ecabdfb09b45537852
+          id: req_708258ffa96949a8bd9ca2bad12e901e
           created: 1744379158740
           modified: 1744379170098
           isPrivate: false
@@ -809,7 +677,7 @@ collection:
       - url: http://localhost:3333/funcionario/1
         name: Funcionario ID
         meta:
-          id: req_a2a3989dfdde44859fe2be67fb08c917
+          id: req_3269a1ee41ab47919f731776844465ae
           created: 1744379158741
           modified: 1744379176666
           isPrivate: false
@@ -829,7 +697,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Create Correto
         meta:
-          id: req_428173873ae441808df1efe8d26f0a8a
+          id: req_d3f3796b3d7e4900bed652fcd052f54d
           created: 1744379158742
           modified: 1744379550116
           isPrivate: false
@@ -860,7 +728,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Funcionario Delete
         meta:
-          id: req_566eedc9ab0b434c954f5df6155d2235
+          id: req_84e3ca59e7f64f1385b8a3fe7e6527e0
           created: 1744379158744
           modified: 1744379573223
           isPrivate: false
@@ -880,7 +748,7 @@ collection:
       - url: http://localhost:3333/Funcionario/3
         name: Funcionario Update
         meta:
-          id: req_535e5b17110346c0b382215a42a43c49
+          id: req_6845eae343ea46e8ab588ac3c47f16ba
           created: 1744379158745
           modified: 1744379581320
           isPrivate: false
@@ -911,7 +779,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Create Errado
         meta:
-          id: req_014e40464d164e87ba6c190bbbbc5aa2
+          id: req_e3faa8518636411086fe7e239b7f26f4
           created: 1744379158746
           modified: 1744379500511
           isPrivate: false
@@ -941,15 +809,15 @@ collection:
           rebuildPath: true
   - name: Palestrante
     meta:
-      id: fld_5253a0bba52c42c781907fc61615e26e
+      id: fld_37ed1f6ce1b14c0e9aa6817a366a8a60
       created: 1744379410162
-      modified: 1744379421642
+      modified: 1747395347232
       sortKey: -1744379410163
     children:
       - url: http://localhost:3333/palestrante/3
         name: Palestrante Delete
         meta:
-          id: req_c9418a7c95864b9e85a059ff15349182
+          id: req_58fdd8bda29c4459a516f18d68bc578a
           created: 1744379446848
           modified: 1744380353220
           isPrivate: false
@@ -969,7 +837,7 @@ collection:
       - url: http://localhost:3333/palestrante/3
         name: Palestrante Update
         meta:
-          id: req_1c990ccccde5426bbb6cc5c239fe5472
+          id: req_9bc6027a23434894a95a814f9cab4fb9
           created: 1744379472413
           modified: 1744380348050
           isPrivate: false
@@ -1000,7 +868,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Create
         meta:
-          id: req_b2a9a92a7d1f4c818f6027d57bbca874
+          id: req_001d9b40f2474ddfae709669e3831593
           created: 1744379480266
           modified: 1744380324986
           isPrivate: false
@@ -1031,7 +899,7 @@ collection:
       - url: http://localhost:3333/palestrante/1
         name: Palestrante ID
         meta:
-          id: req_032f0352efeb49d989e8e23958d02b01
+          id: req_fd9d7681962f481097076d1becdd8e46
           created: 1744379485425
           modified: 1744380313631
           isPrivate: false
@@ -1054,7 +922,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Todos
         meta:
-          id: req_152b05a475a84f04b26f594882f6edd1
+          id: req_c7db2450a09744198ff87433fd00c594
           created: 1744379490039
           modified: 1744380305535
           isPrivate: false
@@ -1074,7 +942,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Create Errado
         meta:
-          id: req_0d6fbc3d2e084da6bd8997d9f44d6b71
+          id: req_46137c73056c4c2fa668f4bc3e3ddf9b
           created: 1744380116700
           modified: 1744380332385
           isPrivate: false
@@ -1102,21 +970,94 @@ collection:
             send: true
             store: true
           rebuildPath: true
-  - name: Palestrante
+  - name: Presenca
     meta:
-      id: fld_84b4e65058814d0e9476883b222122a0
-      created: 1744379410162
-      modified: 1746789201453
-      sortKey: -1744379410163
+      id: fld_96872512ea74483e981d0f1e2d1eb8a3
+      created: 1747396015155
+      modified: 1747400272707
+      sortKey: -1747396015155
     children:
-      - url: http://localhost:3333/palestrante/3
-        name: Palestrante Delete
+      - url: http://localhost:3333/presenca
+        name: "Presença Create "
         meta:
-          id: req_db74ce0c7f9f4bc785161f1aec6b9419
-          created: 1744379446848
-          modified: 1744380353220
+          id: req_230f25942d194840ab48c9d68a08844d
+          created: 1747396023885
+          modified: 1747400469227
           isPrivate: false
-          sortKey: -1744379462581
+          sortKey: -1747396023885
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "data": "2023-11-20",
+              "horario": "13:00",
+              "tipo_presenca": "Entrada",
+              "modo_registro": "QR Code",
+              "participante_id": 3,  
+              "evento_id": 1         
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/presenca
+        name: Presença Listar Todos
+        meta:
+          id: req_d604ae25e793493bafaddbb641c3e7ff
+          created: 1747396267451
+          modified: 1747396766097
+          isPrivate: false
+          sortKey: -1747396267451
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/presenca/1
+        name: Presença Listar ID
+        meta:
+          id: req_37cf9762242b49dfbae063f6166addeb
+          created: 1747400290652
+          modified: 1747400294345
+          isPrivate: false
+          sortKey: -1747396145668
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/presenca/1
+        name: Presença Delete
+        meta:
+          id: req_68ed484781e3429089f33900a2dd8053
+          created: 1747400421752
+          modified: 1747400426628
+          isPrivate: false
+          sortKey: -1747396023785
         method: DELETE
         headers:
           - name: User-Agent
@@ -1129,23 +1070,25 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/palestrante/3
-        name: Palestrante Update
+      - url: http://localhost:3333/presenca/1
+        name: Presença Update
         meta:
-          id: req_abdec4d2a8f54753b6920a75c485b80f
-          created: 1744379472413
-          modified: 1744380348050
+          id: req_6c51b8f064bc459da0978eaf4fc533b8
+          created: 1747400437992
+          modified: 1747401053953
           isPrivate: false
-          sortKey: -1744379462681
+          sortKey: -1747396023810
         method: PUT
         body:
           mimeType: application/json
           text: |-
             {
-              "nome": "Dr. João Santos",
-              "email": "joao.santos@email.com",
-              "especialidade": "Inteligência Artificial e Machine Learning",
-              "nome_palestra": "O Futuro da IA na Indústria 4.0"
+              "data": "2023-11-20",
+              "horario": "13:00",
+              "tipo_presenca": "saida",
+              "modo_registro": "Lista",
+              "participante_id": 3,  
+              "evento_id": 1         
             }
         headers:
           - name: Content-Type
@@ -1160,23 +1103,25 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/palestrante
-        name: Palestrante Create
+      - url: http://localhost:3333/presenca
+        name: Presença Create Errado
         meta:
-          id: req_6679dac2f713431c993ec892c46e3583
-          created: 1744379480266
-          modified: 1744380324986
+          id: req_49533f5ffb4047d6850f44627a48b429
+          created: 1747400675887
+          modified: 1747401374639
           isPrivate: false
-          sortKey: -1744379462781
+          sortKey: -1747396023835
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-              "nome": "Dr. João Santos",
-              "email": "joao2@email.com",
-              "especialidade": "Inteligência Artificial",
-              "nome_palestra": "O Futuro da IA"
+              "data": "2023-11-20",
+              "horario": "1300",
+              "tipo_presenca": "a",
+              "modo_registro": "a",
+              "participante_id": 2,  
+              "evento_id": 1         
             }
         headers:
           - name: Content-Type
@@ -1191,19 +1136,29 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/palestrante/1
-        name: Palestrante ID
+      - url: http://localhost:3333/presenca
+        name: Presença Create Errado regra 1
         meta:
-          id: req_2745e8a3e0d14f639826474a9890f161
-          created: 1744379485425
-          modified: 1744380313631
+          id: req_ae7cd20a93d643969322c866d31965ac
+          created: 1747401128718
+          modified: 1747401133682
           isPrivate: false
-          sortKey: -1744379462881
-        method: GET
-        parameters:
-          - disabled: false
-            id: pair_98807135a8a14b8cb5a0e2bc0e0c20fa
+          sortKey: -1747396023822.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "data": "2023-11-20",
+              "horario": "13:00",
+              "tipo_presenca": "Entrada",
+              "modo_registro": "QR Code",
+              "participante_id": 1,  
+              "evento_id": 1         
+            }
         headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.0.2
         settings:
@@ -1214,16 +1169,29 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/palestrante
-        name: Palestrante Todos
+      - url: http://localhost:3333/presenca
+        name: Presença Create Errado regra 2
         meta:
-          id: req_3f99176ea67e4500aef43c023feac4bb
-          created: 1744379490039
-          modified: 1744380305535
+          id: req_21156dd6698c481ab9d84a2574d3b700
+          created: 1747401144634
+          modified: 1747401348762
           isPrivate: false
-          sortKey: -1744379462981
-        method: GET
+          sortKey: -1747396023816.25
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "data": "2022-11-20",
+              "horario": "13:00",
+              "tipo_presenca": "Entrada",
+              "modo_registro": "QR Code",
+              "participante_id": 4,  
+              "evento_id": 1         
+            }
         headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.0.2
         settings:
@@ -1236,19 +1204,238 @@ collection:
           rebuildPath: true
   - name: Certificado
     meta:
-      id: fld_9263d82090db40018b25f195446ec67b
-      created: 1746793732970
-      modified: 1746800273259
-      sortKey: -1746793732970
+      id: fld_736f6f0cd0694e6397574e775d8302fb
+      created: 1747396669627
+      modified: 1747396994368
+      sortKey: -1747396669627
     children:
       - url: http://localhost:3333/certificado
-        name: Create
+        name: Certificado Post Errado
         meta:
-          id: req_46d63b2adffb4955805b6fc860d11bcf
-          created: 1746793749162
-          modified: 1746800329268
+          id: req_4193a43eef4c4aa2a16e3695bb29b986
+          created: 1747396691101
+          modified: 1747401315404
           isPrivate: false
-          sortKey: -1746793992555
+          sortKey: -1747396691101
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
+              "data_emissao": "2023-12-16",
+              "cod_validacao": 123456,
+              "tipo_certificado": "Participação",
+              "participante_id": 1,
+              "evento_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado
+        name: Certificado Create
+        meta:
+          id: req_68cc4e7b739e47daabe6f0930b4ab179
+          created: 1747396930926
+          modified: 1747399764941
+          isPrivate: false
+          sortKey: -1747396930926
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
+              "data_emissao": "2023-12-16",
+              "cod_validacao": 123456,
+              "tipo_certificado": "Participação",
+              "participante_id": 1,
+              "evento_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado
+        name: Certificado Listar Todos
+        meta:
+          id: req_53ef1fef1e9d4e8fba1469b93cce8c02
+          created: 1747397977390
+          modified: 1747397982785
+          isPrivate: false
+          sortKey: -1747396931026
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado/1
+        name: Certificado Listar ID
+        meta:
+          id: req_a4d32405beba4327bbfa12d95dc25406
+          created: 1747400860433
+          modified: 1747400862331
+          isPrivate: false
+          sortKey: -1747396930976
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado/1
+        name: Certificado Delete
+        meta:
+          id: req_64fa51a95e274286ac451e57ef576640
+          created: 1747400886830
+          modified: 1747400903931
+          isPrivate: false
+          sortKey: -1747396691001
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado/1
+        name: Certificado Update
+        meta:
+          id: req_c0e93eced24845c2be1a854c3f38361f
+          created: 1747400911691
+          modified: 1747400925446
+          isPrivate: false
+          sortKey: -1747396479226
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
+              "data_emissao": "2023-12-16",
+              "cod_validacao": 123456,
+              "tipo_certificado": "Participação",
+              "participante_id": 1,
+              "evento_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Avaliacao
+    meta:
+      id: fld_615b3dca22304c4499c208d7e0d06836
+      created: 1747396982251
+      modified: 1747396982251
+      sortKey: -1747396982251
+    children:
+      - url: http://localhost:3333/avaliacao
+        name: Avaliacao Create
+        meta:
+          id: req_a68b00b464ab43d0a98cccfa7021614c
+          created: 1747396988295
+          modified: 1747399216992
+          isPrivate: false
+          sortKey: -1747396988295
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nota": 2,
+              "comentarios": "Muito Legal",
+              "data_avaliacao": "2023-12-15",
+            	"participante": "Carlos",
+              "participante_id": "1",
+              "evento_id": "1"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacao
+        name: Avaliacao Listar Todos
+        meta:
+          id: req_b89b8d19233845d4a30f6dc70d2c02f5
+          created: 1747397810006
+          modified: 1747397983839
+          isPrivate: false
+          sortKey: -1747396988395
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacao
+        name: Avaliacao Create Errado Todos
+        meta:
+          id: req_f04b54bbd9fc45219a3dbf953563e58b
+          created: 1747398894228
+          modified: 1747398896098
+          isPrivate: false
+          sortKey: -1747396959660.5
         method: POST
         body:
           mimeType: application/json
@@ -1281,14 +1468,14 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/certificado/1
-        name: Listar Todos
+      - url: http://localhost:3333/avaliacao/1
+        name: Avaliacao Listar ID
         meta:
-          id: req_fde5c1849d29442495d36038514365ad
-          created: 1746795522858
-          modified: 1746795559488
+          id: req_c77a013704814392a269538d3dc09be0
+          created: 1747400953356
+          modified: 1747400955597
           isPrivate: false
-          sortKey: -1746793992655
+          sortKey: -1747396988345
         method: GET
         headers:
           - name: User-Agent
@@ -1301,22 +1488,15 @@ collection:
             send: true
             store: true
           rebuildPath: true
-  - name: Presença
-    meta:
-      id: fld_f1c074abbb3c4293a358b9e7464cac46
-      created: 1746795764039
-      modified: 1746795769574
-      sortKey: -1746795764039
-    children:
-      - url: http://localhost:3333/presenca/1
-        name: Listar Todos
+      - url: http://localhost:3333/avaliacao/1
+        name: Avaliacao Delete
         meta:
-          id: req_fce5b995e01f4949a3c383af30b29d46
-          created: 1746795774435
-          modified: 1746795789838
+          id: req_fa86434160fe4c23aea210e12d37dcb1
+          created: 1747400962474
+          modified: 1747400969246
           isPrivate: false
-          sortKey: -1746795778709
-        method: GET
+          sortKey: -1747396959560.5
+        method: DELETE
         headers:
           - name: User-Agent
             value: insomnia/11.0.2
@@ -1328,63 +1508,23 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/presenca
-        name: Create
+      - url: http://localhost:3333/avaliacao/1
+        name: Avaliacao Update
         meta:
-          id: req_80d3c93984c74cf5a23501e6d9bee1b5
-          created: 1746798008388
-          modified: 1746800446538
+          id: req_4a19b14141b14d298dd3ce8e030daaf1
+          created: 1747400996627
+          modified: 1747401051120
           isPrivate: false
-          sortKey: -1746795778759
-        method: POST
+          sortKey: -1747396959610.5
+        method: PUT
         body:
           mimeType: application/json
           text: |-
             {
-              "data": "2023-11-20",
-              "horario": "13:00",
-              "tipo_presenca": "Entrada",
-              "modo_registro": "QR Code",
-              "participante_id": 1,  
-              "evento_id": 1         
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.0.2
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - name: Avaliação
-    meta:
-      id: fld_3fca157543de4fce90e1dc939d7a17d0
-      created: 1746798003845
-      modified: 1746800272283
-      sortKey: -1746798003845
-    children:
-      - url: http://localhost:3333/avaliacao
-        name: Create
-        meta:
-          id: req_3b1dd723c898495c97827f2720ee82b6
-          created: 1746795800712
-          modified: 1746800439559
-          isPrivate: false
-          sortKey: -1746798011117
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "nota": 12.5,
-              "comentarios": null,
-              "data_avaliacao": "20/12/2023",
-              "participante": "1",
+              "nota": 2,
+              "comentarios": "Muito Ruim",
+              "data_avaliacao": "2023-12-15",
+            	"participante": "Carlos almeida",
               "participante_id": "1",
               "evento_id": "1"
             }
@@ -1401,16 +1541,29 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3333/presenca/1
-        name: Listar Todos
+      - url: http://localhost:3333/avaliacao
+        name: Avaliacao Create Errado Regra 1
         meta:
-          id: req_9c883daa5d1642ff90055068dce93742
-          created: 1746798013764
-          modified: 1746798019370
+          id: req_63ec26083f104452affee1e7dcdab51c
+          created: 1747401424616
+          modified: 1747401441405
           isPrivate: false
-          sortKey: -1746798011217
-        method: GET
+          sortKey: -1747396959635.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nota": 2,
+              "comentarios": "Muito Legal",
+              "data_avaliacao": "2023-12-15",
+            	"participante": "Carlos",
+              "participante_id": "1",
+              "evento_id": "1"
+            }
         headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.0.2
         settings:
@@ -1424,13 +1577,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_47295957e545d1e208070e8c01aebd6e4eb8c9c6
+    id: jar_646321cafda74c64ab23f348c7489e8c
     created: 1744377556629
     modified: 1744377556629
 environments:
   name: Base Environment
   meta:
-    id: env_47295957e545d1e208070e8c01aebd6e4eb8c9c6
+    id: env_d51714262a5945258e6da71c0cfca8fe
     created: 1744377556626
     modified: 1744377556626
     isPrivate: false

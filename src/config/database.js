@@ -350,7 +350,8 @@ Object.values(models)
         horario: "09:00", 
         tipo_presenca: "Entrada", 
         modo_registro: "QR Code",
-        participante_id: participante1.id
+        participante_id: participante1.id,
+        evento_id: "1"
     });
 
     const presenca2 = await Presenca.create({
@@ -358,7 +359,8 @@ Object.values(models)
         horario: "14:00", 
         tipo_presenca: "Entrada", 
         modo_registro: "QR Code",
-        participante_id: participante2.id
+        participante_id: participante2.id,
+        evento_id: "2"
     });
 
     const presenca3 = await Presenca.create({
@@ -366,7 +368,9 @@ Object.values(models)
         horario: "10:00", 
         tipo_presenca: "Entrada", 
         modo_registro: "QR Code",
-        participante_id: participante3.id
+        participante_id: participante3.id,
+        evento_id: "3"
+
     });
 
     const presenca4 = await Presenca.create({
@@ -374,7 +378,8 @@ Object.values(models)
         horario: "13:00", 
         tipo_presenca: "Entrada", 
         modo_registro: "QR Code",
-        participante_id: participante4.id
+        participante_id: participante4.id,
+        evento_id: "4"
     });
     
     console.log("Banco de dados inicializado com sucesso!");

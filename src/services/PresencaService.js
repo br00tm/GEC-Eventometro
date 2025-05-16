@@ -1,4 +1,4 @@
-//PEDRO GOMES
+//MATEUS DE ANGELI
 
 import { Presenca } from "../models/Presenca.js";
 import { Participante } from "../models/Participante.js";
@@ -6,7 +6,7 @@ import { Evento } from "../models/Evento.js";
 import sequelize from '../config/database.js';
 import { QueryTypes } from 'sequelize';
 
-//MATEUS DE ANGELI
+
 class PresencaService {
   
   static async findAll(req, res) {
@@ -38,8 +38,7 @@ class PresencaService {
       // Validação: formato do horário (HH:MM)
       const horarioRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
       if (!horarioRegex.test(horario)) {
-        throw new Error("Horário deve estar no formato HH:MM");
-      }
+        throw new Error("Horário deve estar no formato HH:MM");      }
 
       const t = await sequelize.transaction();
       try {
