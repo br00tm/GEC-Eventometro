@@ -188,65 +188,71 @@ Object.values(models)
         carga_horaria: 40.0
     });
     
-    const avaliacao1 = await Avaliacao.create({
-        nota: 3.5, 
-        comentarios: "Evento excelente!", 
-        data_avaliacao: "2023-10-15", 
-        participante: "Carlos Silva",
-        participante_id: participante1.id
-    });
-
-    const avaliacao2 = await Avaliacao.create({
-        nota: 3.2, 
-        comentarios: "Muito bom, mas pode melhorar!", 
-        data_avaliacao: "2023-10-16", 
-        participante: "Mariana Oliveira",
-        participante_id: participante2.id
-    });
-
-    const avaliacao3 = await Avaliacao.create({
-        nota: 5, 
-        comentarios: "Ótima organização!", 
-        data_avaliacao: "2023-10-17", 
-        participante: "Roberto Santos",
-        participante_id: participante3.id
-    });
-
-    const avaliacao4 = await Avaliacao.create({
-        nota: 1.2, 
-        comentarios: "Conteúdo muito relevante!", 
-        data_avaliacao: "2023-10-18", 
-        participante: "Ana Paula Lima",
-        participante_id: participante4.id
-    });
-    
     const evento1 = await Evento.create({
         nome: "Conferência de Tecnologia 2023", 
         data: "2023-11-20", 
-        local_id: local1.id, 
-        avaliacao_id: avaliacao1.id
+        local_id: local1.id
     });
     
     const evento2 = await Evento.create({
         nome: "Workshop de Inovação", 
         data: "2023-12-05", 
-        local_id: local2.id,
-        avaliacao_id: avaliacao2.id
+        local_id: local2.id
     });
 
     const evento3 = await Evento.create({
         nome: "Cloud Computing Summit", 
         data: "2023-12-15", 
-        local_id: local3.id,
-        avaliacao_id: avaliacao3.id
+        local_id: local3.id
     });
 
     const evento4 = await Evento.create({
         nome: "Security Conference", 
         data: "2023-12-20", 
-        local_id: local4.id,
-        avaliacao_id: avaliacao4.id
+        local_id: local4.id
     });
+
+    const avaliacao1 = await Avaliacao.create({
+        nota: 3.5, 
+        comentarios: "Evento excelente!", 
+        data_avaliacao: "2023-10-15", 
+        participante: "Carlos Silva",
+        participante_id: participante1.id,
+        evento_id: evento1.id
+    });
+
+    const avaliacao2 = await Avaliacao.create({
+        nota: 4.0,
+        comentarios: "Muito bom o evento!",
+        data_avaliacao: "2023-10-16",
+        participante: "Maria Santos",
+        participante_id: participante2.id,
+        evento_id: evento2.id
+    });
+
+    const avaliacao3 = await Avaliacao.create({
+        nota: 5.0,
+        comentarios: "Evento perfeito, superou minhas expectativas!",
+        data_avaliacao: "2023-10-17",
+        participante: "João Oliveira",
+        participante_id: participante3.id,
+        evento_id: evento3.id
+    });
+
+    const avaliacao4 = await Avaliacao.create({
+        nota: 4.8, 
+        comentarios: "Conteúdo muito relevante e bem apresentado!", 
+        data_avaliacao: "2023-10-18", 
+        participante: "Ana Paula Lima",
+        participante_id: participante4.id,
+        evento_id: evento4.id
+    });
+
+    // Atualizar os eventos com as avaliações
+    await evento1.update({ avaliacao_id: avaliacao1.id });
+    await evento2.update({ avaliacao_id: avaliacao2.id });
+    await evento3.update({ avaliacao_id: avaliacao3.id });
+    await evento4.update({ avaliacao_id: avaliacao4.id });
     
     await sequelize.query(
         `INSERT INTO evento_palestrante (eventoId, palestranteId, createdAt, updatedAt) 
@@ -318,7 +324,9 @@ Object.values(models)
         data_emissao: "2023-11-21", 
         cod_validacao: 123456, 
         tipo_certificado: "Participação",
-        participante_id: participante1.id
+        descricao: "Certificamos a participação no evento de tecnologia com carga horária de 8 horas",
+        participante_id: participante1.id,
+        evento_id: evento1.id
     });
 
     const certificado2 = await Certificado.create({
@@ -326,7 +334,9 @@ Object.values(models)
         data_emissao: "2023-12-06", 
         cod_validacao: 234567, 
         tipo_certificado: "Participação",
-        participante_id: participante2.id
+        descricao: "Certificamos a participação no workshop de inovação com carga horária de 4 horas",
+        participante_id: participante2.id,
+        evento_id: evento2.id
     });
 
     const certificado3 = await Certificado.create({
@@ -334,7 +344,9 @@ Object.values(models)
         data_emissao: "2023-12-16", 
         cod_validacao: 345678, 
         tipo_certificado: "Participação",
-        participante_id: participante3.id
+        descricao: "Certificamos a participação no summit de cloud computing com carga horária de 6 horas",
+        participante_id: participante3.id,
+        evento_id: evento3.id
     });
 
     const certificado4 = await Certificado.create({
@@ -342,7 +354,9 @@ Object.values(models)
         data_emissao: "2023-12-21", 
         cod_validacao: 456789, 
         tipo_certificado: "Participação",
-        participante_id: participante4.id
+        descricao: "Certificamos a participação na conferência de segurança com carga horária de 8 horas",
+        participante_id: participante4.id,
+        evento_id: evento4.id
     });
     
     const presenca1 = await Presenca.create({
@@ -380,6 +394,14 @@ Object.values(models)
         modo_registro: "QR Code",
         participante_id: participante4.id,
         evento_id: "4"
+    });
+    const presenca5 = await Presenca.create({
+        data: "2023-11-20", 
+        horario: "09:00", 
+        tipo_presenca: "Entrada", 
+        modo_registro: "QR Code",
+        participante_id: participante1.id,
+        evento_id: "2"
     });
     
     console.log("Banco de dados inicializado com sucesso!");

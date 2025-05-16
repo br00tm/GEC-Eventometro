@@ -33,12 +33,42 @@ class AvaliacaoService {
 
   static async create(req, res) {
     const { nota, comentarios, data_avaliacao, participante, participante_id, evento_id } = req.body;
+    const errors = [];
 
-    // Verificar regras de negócio antes de criar a avaliação
-    if (await this.verificarRegrasDeNegocio(req)) {
-      // Validação adicional: nota entre 0 e 5
-      if (nota < 0 || nota > 5) {
-        throw new Error("A nota deve estar entre 0 e 5");
+    // Validações básicas
+    if (!nota && nota !== 0) {
+      errors.push("A nota é obrigatória");
+    } else if (nota < 0 || nota > 5) {
+      errors.push("A nota deve estar entre 0 e 5");
+    }
+
+    if (!data_avaliacao) {
+      errors.push("A data de avaliação é obrigatória");
+    } else {
+      const dataRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dataRegex.test(data_avaliacao)) {
+        errors.push("Data de avaliação deve seguir o formato yyyy-MM-dd");
+      }
+    }
+
+    if (!participante_id) {
+      errors.push("ID do participante é obrigatório");
+    }
+
+    if (!evento_id) {
+      errors.push("ID do evento é obrigatório");
+    }
+
+    // Se há erros de validação básica, lança antes de consultar o banco
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+
+    try {
+      // Verificar regras de negócio
+      const regrasErrors = await this.verificarRegrasDeNegocio(req);
+      if (regrasErrors.length > 0) {
+        throw new Error(regrasErrors.join("; "));
       }
 
       const t = await sequelize.transaction();
@@ -63,24 +93,56 @@ class AvaliacaoService {
         await t.rollback();
         throw new Error("Erro ao criar avaliação: " + error.message);
       }
+    } catch (error) {
+      throw error;
     }
   }
 
   static async update(req, res) {
     const { id } = req.params;
     const { nota, comentarios, data_avaliacao, participante, participante_id, evento_id } = req.body;
+    const errors = [];
     
-    // Buscar a avaliação existente
-    const obj = await Avaliacao.findOne({ where: { id: id } });
-    if (!obj) {
-      throw new Error("Avaliação não encontrada");
+    // Validações básicas
+    if (!nota && nota !== 0) {
+      errors.push("A nota é obrigatória");
+    } else if (nota < 0 || nota > 5) {
+      errors.push("A nota deve estar entre 0 e 5");
+    }
+
+    if (!data_avaliacao) {
+      errors.push("A data de avaliação é obrigatória");
+    } else {
+      const dataRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dataRegex.test(data_avaliacao)) {
+        errors.push("Data de avaliação deve seguir o formato yyyy-MM-dd");
+      }
+    }
+
+    if (!participante_id) {
+      errors.push("ID do participante é obrigatório");
+    }
+
+    if (!evento_id) {
+      errors.push("ID do evento é obrigatório");
+    }
+
+    // Se há erros de validação básica, lança antes de consultar o banco
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
     }
     
-    // Verificar regras de negócio para atualização
-    if (await this.verificarRegrasDeNegocioUpdate(req, obj)) {
-      // Validação adicional: nota entre 0 e 5
-      if (nota < 0 || nota > 5) {
-        throw new Error("A nota deve estar entre 0 e 5");
+    try {
+      // Buscar a avaliação existente
+      const obj = await Avaliacao.findOne({ where: { id: id } });
+      if (!obj) {
+        throw new Error("Avaliação não encontrada");
+      }
+      
+      // Verificar regras de negócio para atualização
+      const regrasErrors = await this.verificarRegrasDeNegocioUpdate(req, obj);
+      if (regrasErrors.length > 0) {
+        throw new Error(regrasErrors.join("; "));
       }
       
       const t = await sequelize.transaction();
@@ -106,6 +168,8 @@ class AvaliacaoService {
         await t.rollback();
         throw new Error("Erro ao atualizar avaliação: " + error.message);
       }
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -154,64 +218,72 @@ class AvaliacaoService {
   // Regra de Negócio 3: Caso a nota seja 1 ou 5, a descrição deverá ser obrigatória
   static async verificarRegrasDeNegocio(req) {
     const { nota, comentarios, participante_id, evento_id } = req.body;
+    const errors = [];
 
-    // Regra de Negócio 1: Participante só pode fazer uma avaliação para cada evento
-    const avaliacaoExistente = await this.findByParticipanteAndEvento(participante_id, evento_id);
-    if (avaliacaoExistente.length > 0) {
-      throw new Error("Este participante já avaliou este evento");
+    try {
+      // Regra de Negócio 1: Participante só pode fazer uma avaliação para cada evento
+      const avaliacaoExistente = await this.findByParticipanteAndEvento(participante_id, evento_id);
+      if (avaliacaoExistente.length > 0) {
+        errors.push("Este participante já avaliou este evento");
+      }
+
+      // Regra de Negócio 2: Participante só pode fazer avaliação para um evento que possui presença
+      const temPresenca = await this.verificarPresenca(participante_id, evento_id);
+      if (!temPresenca) {
+        errors.push("O participante precisa ter presença no evento para avaliá-lo");
+      }
+
+      // Regra de Negócio 3: Caso a nota seja 1 ou 5, a descrição deverá ser obrigatória
+      if ((nota === 1 || nota === 5) && (!comentarios || comentarios.trim() === "")) {
+        errors.push("Para notas 1 ou 5, é obrigatório incluir comentários");
+      }
+    } catch (error) {
+      errors.push("Erro ao verificar regras de negócio: " + error.message);
     }
 
-    // Regra de Negócio 2: Participante só pode fazer avaliação para um evento que possui presença
-    const temPresenca = await this.verificarPresenca(participante_id, evento_id);
-    if (!temPresenca) {
-      throw new Error("O participante precisa ter presença no evento para avaliá-lo");
-    }
-
-    // Regra de Negócio 3: Caso a nota seja 1 ou 5, a descrição deverá ser obrigatória
-    if ((nota === 1 || nota === 5) && (!comentarios || comentarios.trim() === "")) {
-      throw new Error("Para notas 1 ou 5, é obrigatório incluir comentários");
-    }
-
-    // Se chegou até aqui, todas as regras foram satisfeitas
-    return true;
+    return errors;
   }
   
   // Método específico para validar na atualização
   static async verificarRegrasDeNegocioUpdate(req, avaliacaoAtual) {
     const { nota, comentarios, participante_id, evento_id } = req.body;
+    const errors = [];
     
-    // Regra 1: Participante só pode fazer uma avaliação para cada evento (exceto a atual)
-    if (participante_id != avaliacaoAtual.participante_id || evento_id != avaliacaoAtual.evento_id) {
-      const avaliacaoExistente = await sequelize.query(
-        "SELECT * FROM avaliacoes WHERE participante_id = :participanteId AND evento_id = :eventoId AND id != :avaliacaoId",
-        {
-          replacements: { 
-            participanteId: participante_id, 
-            eventoId: evento_id,
-            avaliacaoId: avaliacaoAtual.id
-          },
-          type: QueryTypes.SELECT
+    try {
+      // Regra 1: Participante só pode fazer uma avaliação para cada evento (exceto a atual)
+      if (participante_id != avaliacaoAtual.participante_id || evento_id != avaliacaoAtual.evento_id) {
+        const avaliacaoExistente = await sequelize.query(
+          "SELECT * FROM avaliacoes WHERE participante_id = :participanteId AND evento_id = :eventoId AND id != :avaliacaoId",
+          {
+            replacements: { 
+              participanteId: participante_id, 
+              eventoId: evento_id,
+              avaliacaoId: avaliacaoAtual.id
+            },
+            type: QueryTypes.SELECT
+          }
+        );
+        
+        if (avaliacaoExistente.length > 0) {
+          errors.push("Este participante já avaliou este evento");
         }
-      );
-      
-      if (avaliacaoExistente.length > 0) {
-        throw new Error("Este participante já avaliou este evento");
+        
+        // Regra 2: Participante só pode fazer avaliação para um evento que possui presença
+        const temPresenca = await this.verificarPresenca(participante_id, evento_id);
+        if (!temPresenca) {
+          errors.push("O participante precisa ter presença no evento para avaliá-lo");
+        }
       }
       
-      // Regra 2: Participante só pode fazer avaliação para um evento que possui presença
-      const temPresenca = await this.verificarPresenca(participante_id, evento_id);
-      if (!temPresenca) {
-        throw new Error("O participante precisa ter presença no evento para avaliá-lo");
+      // Regra 3: Caso a nota seja 1 ou 5, a descrição deverá ser obrigatória
+      if ((nota === 1 || nota === 5) && (!comentarios || comentarios.trim() === "")) {
+        errors.push("Para notas 1 ou 5, é obrigatório incluir comentários");
       }
+    } catch (error) {
+      errors.push("Erro ao verificar regras de negócio: " + error.message);
     }
     
-    // Regra 3: Caso a nota seja 1 ou 5, a descrição deverá ser obrigatória
-    if ((nota === 1 || nota === 5) && (!comentarios || comentarios.trim() === "")) {
-      throw new Error("Para notas 1 ou 5, é obrigatório incluir comentários");
-    }
-    
-    // Se chegou até aqui, todas as regras foram satisfeitas
-    return true;
+    return errors;
   }
   
   // Método auxiliar para buscar avaliações por evento

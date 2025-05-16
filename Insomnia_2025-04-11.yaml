@@ -1,13 +1,13 @@
 type: collection.insomnia.rest/5.0
 name: Correto
 meta:
-  id: wrk_db9975074f4546088d821b485c3de2ea
-  created: 1747395336058
-  modified: 1747402522331
+  id: wrk_b593b0a524134d22af50382fa8e7f8ac
+  created: 1747402705106
+  modified: 1747402705106
 collection:
   - name: Local
     meta:
-      id: fld_f4a80d3447eb49ecbdcb5644e83b6bba
+      id: fld_24fe4791fee04ad9b694b6a5096221d6
       created: 1744377967188
       modified: 1747395358095
       sortKey: -1744377967188
@@ -15,7 +15,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Todos
         meta:
-          id: req_34b3be455b1f4a9dad33a6eeb8dd9a25
+          id: req_59f82bbaf87a496695da4e70415339cd
           created: 1744377581599
           modified: 1744377974260
           isPrivate: false
@@ -35,7 +35,7 @@ collection:
       - url: http://localhost:3333/local/1
         name: Local ID
         meta:
-          id: req_b2fdf34c9f4a45ed995fd57da33ea9d4
+          id: req_f6bfadbea724469392c0344950820615
           created: 1744377804488
           modified: 1744379114716
           isPrivate: false
@@ -55,7 +55,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Correto
         meta:
-          id: req_8dad9a17bc3b449582f24c0b086a94ff
+          id: req_d80a597c3c16492fae55619cdb63e528
           created: 1744377830041
           modified: 1744378327057
           isPrivate: false
@@ -87,7 +87,7 @@ collection:
       - url: http://localhost:3333/local/3
         name: Local Delete
         meta:
-          id: req_5ce5b01bc16a4dabb7a997bb6fd0802c
+          id: req_9d6b1489729043f6b7f85904b0d9353f
           created: 1744377927732
           modified: 1744379096962
           isPrivate: false
@@ -107,7 +107,7 @@ collection:
       - url: http://localhost:3333/local/3
         name: Local Update
         meta:
-          id: req_67a8c57228e14a5098c30845d7b00d6d
+          id: req_f6c582baa7d74c6493dc25b4d15cb313
           created: 1744378058488
           modified: 1744379107953
           isPrivate: false
@@ -139,7 +139,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Errado
         meta:
-          id: req_23807a50584b4145923524b61ca6d4be
+          id: req_441d2aec139b4ee69f85a488f175b935
           created: 1744378314864
           modified: 1744379086046
           isPrivate: false
@@ -170,7 +170,7 @@ collection:
           rebuildPath: true
   - name: Evento
     meta:
-      id: fld_957cfcbf8509428e9733b8968cb44990
+      id: fld_b7d9f69dfad14f958c27ed9fabfbae41
       created: 1744378428888
       modified: 1744378428888
       sortKey: -1744377967138
@@ -178,7 +178,7 @@ collection:
       - url: http://localhost:3333/evento
         name: Evento Todos
         meta:
-          id: req_5aebb1f2cda242209c8fdacc263707e8
+          id: req_82e829072da34b0898178bc615bfce65
           created: 1744378428889
           modified: 1744378481493
           isPrivate: false
@@ -198,7 +198,7 @@ collection:
       - url: http://localhost:3333/evento/1
         name: Evento ID
         meta:
-          id: req_57266d88c60c4ba2be1055f7f8df7b95
+          id: req_2dbcf37c4698418980ddc339dbe9b781
           created: 1744378428891
           modified: 1744378479798
           isPrivate: false
@@ -218,7 +218,7 @@ collection:
       - url: http://localhost:3333/evento
         name: Local Create Correto
         meta:
-          id: req_597745fb69c04ffbba76ee9a4073a5a9
+          id: req_74f4430c03c84788b4125a74404ee1d2
           created: 1744378428893
           modified: 1744378595120
           isPrivate: false
@@ -248,7 +248,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Delete
         meta:
-          id: req_c66e5a2fbcbb4be28225093b348ca6a4
+          id: req_8894159107754373894c8493277f7ca1
           created: 1744378428894
           modified: 1744378668687
           isPrivate: false
@@ -268,7 +268,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Update
         meta:
-          id: req_055c03e0344848eeb449a4e695694b5d
+          id: req_98e2df2e62f94e13a7bb38818b7001db
           created: 1744378428895
           modified: 1744378656153
           isPrivate: false
@@ -298,7 +298,7 @@ collection:
       - url: http://localhost:3333/local
         name: Local Create Errado
         meta:
-          id: req_97f6d83fd249498fb3eb96a2f9399bc0
+          id: req_42c282d8e63d47818ec57dccc0700c54
           created: 1744378428896
           modified: 1744378615518
           isPrivate: false
@@ -327,7 +327,7 @@ collection:
           rebuildPath: true
   - name: Participante
     meta:
-      id: fld_7b7efcf362b7459d8a813e6f4e7c3cbe
+      id: fld_63ab9ba6298d4656a404dd457bab08d2
       created: 1744378686036
       modified: 1744378686036
       sortKey: -1744377967088
@@ -335,7 +335,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Todos
         meta:
-          id: req_08512381156840d386a2d672421afd1c
+          id: req_7153ef876a8e4f20a6044e5f8d136ff0
           created: 1744378686037
           modified: 1744378703241
           isPrivate: false
@@ -355,7 +355,7 @@ collection:
       - url: http://localhost:3333/participante/1
         name: Participante ID
         meta:
-          id: req_ce4427f67a8c4b64ab3099b720be7e2c
+          id: req_c4d8e02a31274ccab39bb129ad18e435
           created: 1744378686038
           modified: 1744378715161
           isPrivate: false
@@ -375,7 +375,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Create Correto
         meta:
-          id: req_32c90357220545eab5cfc3784481cdf5
+          id: req_ec51a5eb457f4926a1228ee5dfb6bac9
           created: 1744378686040
           modified: 1744378756036
           isPrivate: false
@@ -406,7 +406,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Local Delete
         meta:
-          id: req_f7678ff486794620b972b2fd4409b7fd
+          id: req_7fbb93c6ba6d45c8be57c9292b482007
           created: 1744378686041
           modified: 1744378686041
           isPrivate: false
@@ -426,7 +426,7 @@ collection:
       - url: http://localhost:3333/participante/3
         name: Local Update
         meta:
-          id: req_047922345bbd44cc92fe798dd70be04e
+          id: req_50a62b75528a449dab9342d1780555e8
           created: 1744378686042
           modified: 1744379015376
           isPrivate: false
@@ -456,7 +456,7 @@ collection:
       - url: http://localhost:3333/participante
         name: Participante Create Errado
         meta:
-          id: req_67bdd8881b8c4f0b93401b8c907f8884
+          id: req_fe7872215b6d49fe9be0253cf6a1a19b
           created: 1744378686043
           modified: 1744379060946
           isPrivate: false
@@ -486,7 +486,7 @@ collection:
           rebuildPath: true
   - name: Patrocinador
     meta:
-      id: fld_bddec4242e294ebeae50d72dd0a7ab36
+      id: fld_331a9fe8139a4846a7398747381fb684
       created: 1744378916803
       modified: 1744379423082
       sortKey: -1744378916803
@@ -494,7 +494,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Todos
         meta:
-          id: req_e6db5aa2051b4ebc8d51731e58821f50
+          id: req_d9b1e1250f964de0996a6c66d248c0ba
           created: 1744378924324
           modified: 1744380371585
           isPrivate: false
@@ -514,7 +514,7 @@ collection:
       - url: http://localhost:3333/patrocinador/1
         name: Patrocinador ID
         meta:
-          id: req_12c9084de78548adbd6a3f9e0cd87182
+          id: req_6370ae70ee2c43ca8904e45d6eafb565
           created: 1744378946175
           modified: 1744380376078
           isPrivate: false
@@ -537,7 +537,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Create
         meta:
-          id: req_3876bb07787a48c8a4ea150585c5071a
+          id: req_716150a515cb42048d3173a917f84ad2
           created: 1744378953229
           modified: 1744380378842
           isPrivate: false
@@ -568,7 +568,7 @@ collection:
       - url: http://localhost:3333/patrocinador/3
         name: Patrocinador Update
         meta:
-          id: req_3cb9600aa0ca441f831d1eab380b7de2
+          id: req_a1f76c7ef2e34e16b26d2e8d306f2749
           created: 1744378984953
           modified: 1744380384552
           isPrivate: false
@@ -599,7 +599,7 @@ collection:
       - url: http://localhost:3333/patrocinador/3
         name: Patrocinador Delete
         meta:
-          id: req_c1a554d5664748c1ba270dadd42b8a19
+          id: req_4ce7e8b7f8654effabc4dcc4a670a69b
           created: 1744379011216
           modified: 1744380387267
           isPrivate: false
@@ -619,7 +619,7 @@ collection:
       - url: http://localhost:3333/patrocinador
         name: Patrocinador Create Errado
         meta:
-          id: req_12f0eb9b69984341a3983c8b14bcfc15
+          id: req_ab644ffcb8db462d94895fa295d30ec3
           created: 1744380287096
           modified: 1744380381855
           isPrivate: false
@@ -649,7 +649,7 @@ collection:
           rebuildPath: true
   - name: Funcionario
     meta:
-      id: fld_eb8a7ff814d84caea288dfb8c581373c
+      id: fld_fa284b9a7c4a4779ae354335afd91699
       created: 1744379158738
       modified: 1744379158738
       sortKey: -1744377967038
@@ -657,7 +657,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Todos
         meta:
-          id: req_708258ffa96949a8bd9ca2bad12e901e
+          id: req_f4afe7dbf0e54b94973e4c49e98b0b2c
           created: 1744379158740
           modified: 1744379170098
           isPrivate: false
@@ -677,7 +677,7 @@ collection:
       - url: http://localhost:3333/funcionario/1
         name: Funcionario ID
         meta:
-          id: req_3269a1ee41ab47919f731776844465ae
+          id: req_c990bedb2a1d4115ad1a402a12a9b4af
           created: 1744379158741
           modified: 1744379176666
           isPrivate: false
@@ -697,7 +697,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Create Correto
         meta:
-          id: req_d3f3796b3d7e4900bed652fcd052f54d
+          id: req_e97e4e518dd84cc7b14c2ed131659cc7
           created: 1744379158742
           modified: 1744379550116
           isPrivate: false
@@ -728,7 +728,7 @@ collection:
       - url: http://localhost:3333/evento/3
         name: Funcionario Delete
         meta:
-          id: req_84e3ca59e7f64f1385b8a3fe7e6527e0
+          id: req_cd8e795c4ab248d990f1fbdd2c78d1ed
           created: 1744379158744
           modified: 1744379573223
           isPrivate: false
@@ -748,7 +748,7 @@ collection:
       - url: http://localhost:3333/Funcionario/3
         name: Funcionario Update
         meta:
-          id: req_6845eae343ea46e8ab588ac3c47f16ba
+          id: req_4ab5dd814e3242a99a1fd527316b0617
           created: 1744379158745
           modified: 1744379581320
           isPrivate: false
@@ -779,7 +779,7 @@ collection:
       - url: http://localhost:3333/funcionario
         name: Funcionario Create Errado
         meta:
-          id: req_e3faa8518636411086fe7e239b7f26f4
+          id: req_3eefcb53b942427fba16e5de422418f9
           created: 1744379158746
           modified: 1744379500511
           isPrivate: false
@@ -809,7 +809,7 @@ collection:
           rebuildPath: true
   - name: Palestrante
     meta:
-      id: fld_37ed1f6ce1b14c0e9aa6817a366a8a60
+      id: fld_d293ab47ef8848ba88f1a40c5b644cc0
       created: 1744379410162
       modified: 1747395347232
       sortKey: -1744379410163
@@ -817,7 +817,7 @@ collection:
       - url: http://localhost:3333/palestrante/3
         name: Palestrante Delete
         meta:
-          id: req_58fdd8bda29c4459a516f18d68bc578a
+          id: req_fd2da316258f4a54b16c032851e336c5
           created: 1744379446848
           modified: 1744380353220
           isPrivate: false
@@ -837,7 +837,7 @@ collection:
       - url: http://localhost:3333/palestrante/3
         name: Palestrante Update
         meta:
-          id: req_9bc6027a23434894a95a814f9cab4fb9
+          id: req_971a21bde4754ce1940af157765e4c22
           created: 1744379472413
           modified: 1744380348050
           isPrivate: false
@@ -868,7 +868,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Create
         meta:
-          id: req_001d9b40f2474ddfae709669e3831593
+          id: req_4a3853278cf349aaba2b0043e6b636c0
           created: 1744379480266
           modified: 1744380324986
           isPrivate: false
@@ -899,7 +899,7 @@ collection:
       - url: http://localhost:3333/palestrante/1
         name: Palestrante ID
         meta:
-          id: req_fd9d7681962f481097076d1becdd8e46
+          id: req_40711a91b74f4f1b9e10731f3ac6de86
           created: 1744379485425
           modified: 1744380313631
           isPrivate: false
@@ -922,7 +922,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Todos
         meta:
-          id: req_c7db2450a09744198ff87433fd00c594
+          id: req_57283fbb628842749f8fd46ee4429fc1
           created: 1744379490039
           modified: 1744380305535
           isPrivate: false
@@ -942,7 +942,7 @@ collection:
       - url: http://localhost:3333/palestrante
         name: Palestrante Create Errado
         meta:
-          id: req_46137c73056c4c2fa668f4bc3e3ddf9b
+          id: req_de1f0cf03812497c8a152e9349edc568
           created: 1744380116700
           modified: 1744380332385
           isPrivate: false
@@ -972,7 +972,7 @@ collection:
           rebuildPath: true
   - name: Presenca
     meta:
-      id: fld_96872512ea74483e981d0f1e2d1eb8a3
+      id: fld_63ea0e1fc063425aa90048bd9127ba05
       created: 1747396015155
       modified: 1747400272707
       sortKey: -1747396015155
@@ -980,9 +980,9 @@ collection:
       - url: http://localhost:3333/presenca
         name: "Presença Create "
         meta:
-          id: req_230f25942d194840ab48c9d68a08844d
+          id: req_b1260ed65d864a2896f92e8dd1601bec
           created: 1747396023885
-          modified: 1747400469227
+          modified: 1747404935853
           isPrivate: false
           sortKey: -1747396023885
         method: POST
@@ -993,7 +993,7 @@ collection:
               "data": "2023-11-20",
               "horario": "13:00",
               "tipo_presenca": "Entrada",
-              "modo_registro": "QR Code",
+              "modo_registro": "QRCode",
               "participante_id": 3,  
               "evento_id": 1         
             }
@@ -1013,7 +1013,7 @@ collection:
       - url: http://localhost:3333/presenca
         name: Presença Listar Todos
         meta:
-          id: req_d604ae25e793493bafaddbb641c3e7ff
+          id: req_4466c0eab008434695f8bc6c98b3d213
           created: 1747396267451
           modified: 1747396766097
           isPrivate: false
@@ -1033,7 +1033,7 @@ collection:
       - url: http://localhost:3333/presenca/1
         name: Presença Listar ID
         meta:
-          id: req_37cf9762242b49dfbae063f6166addeb
+          id: req_e53580a60d6d4e34b489870e9565e5f0
           created: 1747400290652
           modified: 1747400294345
           isPrivate: false
@@ -1053,7 +1053,7 @@ collection:
       - url: http://localhost:3333/presenca/1
         name: Presença Delete
         meta:
-          id: req_68ed484781e3429089f33900a2dd8053
+          id: req_c4470af085264f3cbaa270c9b882a3a2
           created: 1747400421752
           modified: 1747400426628
           isPrivate: false
@@ -1073,7 +1073,7 @@ collection:
       - url: http://localhost:3333/presenca/1
         name: Presença Update
         meta:
-          id: req_6c51b8f064bc459da0978eaf4fc533b8
+          id: req_6f9c8d30b0e74abfa9fe412bc231f7e1
           created: 1747400437992
           modified: 1747401053953
           isPrivate: false
@@ -1106,9 +1106,9 @@ collection:
       - url: http://localhost:3333/presenca
         name: Presença Create Errado
         meta:
-          id: req_49533f5ffb4047d6850f44627a48b429
+          id: req_fabf1f66f3e64ad0bc5c7cd279e1e7e5
           created: 1747400675887
-          modified: 1747401374639
+          modified: 1747403701457
           isPrivate: false
           sortKey: -1747396023835
         method: POST
@@ -1139,9 +1139,9 @@ collection:
       - url: http://localhost:3333/presenca
         name: Presença Create Errado regra 1
         meta:
-          id: req_ae7cd20a93d643969322c866d31965ac
+          id: req_291205e72023454bb725c252ca8ef1a8
           created: 1747401128718
-          modified: 1747401133682
+          modified: 1747404226992
           isPrivate: false
           sortKey: -1747396023822.5
         method: POST
@@ -1152,7 +1152,7 @@ collection:
               "data": "2023-11-20",
               "horario": "13:00",
               "tipo_presenca": "Entrada",
-              "modo_registro": "QR Code",
+              "modo_registro": "QRCode",
               "participante_id": 1,  
               "evento_id": 1         
             }
@@ -1172,9 +1172,9 @@ collection:
       - url: http://localhost:3333/presenca
         name: Presença Create Errado regra 2
         meta:
-          id: req_21156dd6698c481ab9d84a2574d3b700
+          id: req_f59762c4b84247118829818081cd95c2
           created: 1747401144634
-          modified: 1747401348762
+          modified: 1747404221005
           isPrivate: false
           sortKey: -1747396023816.25
         method: POST
@@ -1185,7 +1185,7 @@ collection:
               "data": "2022-11-20",
               "horario": "13:00",
               "tipo_presenca": "Entrada",
-              "modo_registro": "QR Code",
+              "modo_registro": "QRCode",
               "participante_id": 4,  
               "evento_id": 1         
             }
@@ -1204,7 +1204,7 @@ collection:
           rebuildPath: true
   - name: Certificado
     meta:
-      id: fld_736f6f0cd0694e6397574e775d8302fb
+      id: fld_76f058cadf50464b812479f0f1d584db
       created: 1747396669627
       modified: 1747396994368
       sortKey: -1747396669627
@@ -1212,11 +1212,11 @@ collection:
       - url: http://localhost:3333/certificado
         name: Certificado Post Errado
         meta:
-          id: req_4193a43eef4c4aa2a16e3695bb29b986
+          id: req_e5b242697997493584fd8a78c90501cb
           created: 1747396691101
-          modified: 1747401315404
+          modified: 1747405175501
           isPrivate: false
-          sortKey: -1747396691101
+          sortKey: -1747396870969.75
         method: POST
         body:
           mimeType: application/json
@@ -1225,7 +1225,7 @@ collection:
               "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
               "data_emissao": "2023-12-16",
               "cod_validacao": 123456,
-              "tipo_certificado": "Participação",
+              "tipo_certificado": "1",
               "participante_id": 1,
               "evento_id": 1
             }
@@ -1245,9 +1245,9 @@ collection:
       - url: http://localhost:3333/certificado
         name: Certificado Create
         meta:
-          id: req_68cc4e7b739e47daabe6f0930b4ab179
+          id: req_eb87bb20df194e408f18be34027ad2ff
           created: 1747396930926
-          modified: 1747399764941
+          modified: 1747405312898
           isPrivate: false
           sortKey: -1747396930926
         method: POST
@@ -1259,8 +1259,9 @@ collection:
               "data_emissao": "2023-12-16",
               "cod_validacao": 123456,
               "tipo_certificado": "Participação",
-              "participante_id": 1,
-              "evento_id": 1
+            	"descricao": "muito legal",
+              "participante_id": "1",
+              "evento_id": "2"
             }
         headers:
           - name: Content-Type
@@ -1278,7 +1279,7 @@ collection:
       - url: http://localhost:3333/certificado
         name: Certificado Listar Todos
         meta:
-          id: req_53ef1fef1e9d4e8fba1469b93cce8c02
+          id: req_bbdbee2c2e94421b9aeb37157e978bcf
           created: 1747397977390
           modified: 1747397982785
           isPrivate: false
@@ -1298,7 +1299,7 @@ collection:
       - url: http://localhost:3333/certificado/1
         name: Certificado Listar ID
         meta:
-          id: req_a4d32405beba4327bbfa12d95dc25406
+          id: req_93812759f83842bea9df867829f057f9
           created: 1747400860433
           modified: 1747400862331
           isPrivate: false
@@ -1318,7 +1319,7 @@ collection:
       - url: http://localhost:3333/certificado/1
         name: Certificado Delete
         meta:
-          id: req_64fa51a95e274286ac451e57ef576640
+          id: req_83b67241213c4e1fa679ba550149c133
           created: 1747400886830
           modified: 1747400903931
           isPrivate: false
@@ -1338,7 +1339,7 @@ collection:
       - url: http://localhost:3333/certificado/1
         name: Certificado Update
         meta:
-          id: req_c0e93eced24845c2be1a854c3f38361f
+          id: req_4e8e36e029d242d8bf3bd01b1ad56461
           created: 1747400911691
           modified: 1747400925446
           isPrivate: false
@@ -1368,9 +1369,75 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: http://localhost:3333/certificado
+        name: Certificado Create Errado Regra 1
+        meta:
+          id: req_4c384ccc32ab47caba7e1f1df813faa4
+          created: 1747405035853
+          modified: 1747405179515
+          isPrivate: false
+          sortKey: -1747396811013.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
+              "data_emissao": "2023-12-16",
+              "cod_validacao": 123456,
+              "tipo_certificado": "Participação",
+              "participante_id": 1,
+              "evento_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/certificado
+        name: Certificado Create Errado Regra 2
+        meta:
+          id: req_4bd85ad935fe4c5ba461ec7e98c98a1d
+          created: 1747405056151
+          modified: 1747405171770
+          isPrivate: false
+          sortKey: -1747396751057.25
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nome": "Certificado de Participação - Conferência de Tecnologia 2023",
+              "data_emissao": "2023-12-16",
+              "cod_validacao": 123456,
+              "tipo_certificado": "Participação",
+              "participante_id": 1,
+              "evento_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
   - name: Avaliacao
     meta:
-      id: fld_615b3dca22304c4499c208d7e0d06836
+      id: fld_0e17e43afb344be78e678a5b0c040b92
       created: 1747396982251
       modified: 1747396982251
       sortKey: -1747396982251
@@ -1378,9 +1445,9 @@ collection:
       - url: http://localhost:3333/avaliacao
         name: Avaliacao Create
         meta:
-          id: req_a68b00b464ab43d0a98cccfa7021614c
+          id: req_9b1e2c202f444afbb72670886b11c8bd
           created: 1747396988295
-          modified: 1747399216992
+          modified: 1747404986674
           isPrivate: false
           sortKey: -1747396988295
         method: POST
@@ -1393,7 +1460,7 @@ collection:
               "data_avaliacao": "2023-12-15",
             	"participante": "Carlos",
               "participante_id": "1",
-              "evento_id": "1"
+              "evento_id": "2"
             }
         headers:
           - name: Content-Type
@@ -1411,7 +1478,7 @@ collection:
       - url: http://localhost:3333/avaliacao
         name: Avaliacao Listar Todos
         meta:
-          id: req_b89b8d19233845d4a30f6dc70d2c02f5
+          id: req_f141d04006c845c68ae1e7b7bdc53d35
           created: 1747397810006
           modified: 1747397983839
           isPrivate: false
@@ -1431,9 +1498,9 @@ collection:
       - url: http://localhost:3333/avaliacao
         name: Avaliacao Create Errado Todos
         meta:
-          id: req_f04b54bbd9fc45219a3dbf953563e58b
+          id: req_238b46ae201842c2902f9e9fda8b8e2a
           created: 1747398894228
-          modified: 1747398896098
+          modified: 1747404997764
           isPrivate: false
           sortKey: -1747396959660.5
         method: POST
@@ -1446,14 +1513,8 @@ collection:
               "cod_validacao": "",
               "tipo_certificado": "X",
               "descricao": "AB",
-              "participante": {
-                "id": 1,
-                "nome": "Carlos Silva"
-              },
-              "evento": {
-                "id": 1,
-                "nome": "Conferência de Tecnologia 2023"
-              }
+              "participante_id": "1",
+              "evento_id": "2"
             }
         headers:
           - name: Content-Type
@@ -1471,7 +1532,7 @@ collection:
       - url: http://localhost:3333/avaliacao/1
         name: Avaliacao Listar ID
         meta:
-          id: req_c77a013704814392a269538d3dc09be0
+          id: req_3d170fe569c64b24b81cfb07b058db45
           created: 1747400953356
           modified: 1747400955597
           isPrivate: false
@@ -1491,7 +1552,7 @@ collection:
       - url: http://localhost:3333/avaliacao/1
         name: Avaliacao Delete
         meta:
-          id: req_fa86434160fe4c23aea210e12d37dcb1
+          id: req_5754b16bbcd743ba805ddbcb3fc71c56
           created: 1747400962474
           modified: 1747400969246
           isPrivate: false
@@ -1511,7 +1572,7 @@ collection:
       - url: http://localhost:3333/avaliacao/1
         name: Avaliacao Update
         meta:
-          id: req_4a19b14141b14d298dd3ce8e030daaf1
+          id: req_5d0fabe8a12d46b19b37cc9caaaf4676
           created: 1747400996627
           modified: 1747401051120
           isPrivate: false
@@ -1544,11 +1605,44 @@ collection:
       - url: http://localhost:3333/avaliacao
         name: Avaliacao Create Errado Regra 1
         meta:
-          id: req_63ec26083f104452affee1e7dcdab51c
+          id: req_903f6f9d794c425db69e2ab9ff16deb7
           created: 1747401424616
-          modified: 1747401441405
+          modified: 1747404468494
           isPrivate: false
           sortKey: -1747396959635.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nota": 2,
+              "comentarios": "Muito Legal",
+              "data_avaliacao": "2023-12-15",
+            	"participante": "Carlos",
+              "participante_id": "1",
+              "evento_id": "3"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacao
+        name: Avaliacao Create Errado Regra 2
+        meta:
+          id: req_497f640e2a3d48199ec61de8b34de078
+          created: 1747404374409
+          modified: 1747404388484
+          isPrivate: false
+          sortKey: -1747396959623
         method: POST
         body:
           mimeType: application/json
@@ -1577,13 +1671,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_646321cafda74c64ab23f348c7489e8c
+    id: jar_5f277aed92ea4f008585b140fd02b094
     created: 1744377556629
     modified: 1744377556629
 environments:
   name: Base Environment
   meta:
-    id: env_d51714262a5945258e6da71c0cfca8fe
+    id: env_e12e57cc3d6c4c27a11393803e5374fb
     created: 1744377556626
     modified: 1744377556626
     isPrivate: false

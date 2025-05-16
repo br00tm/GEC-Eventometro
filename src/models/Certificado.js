@@ -29,6 +29,13 @@ class Certificado extends Model {
           notEmpty: { msg: "Tipo de Certificado deve ser preenchido!" },
           len: { args: [2, 50], msg: "Tipo de Certificado deve ter entre 2 e 50 letras!" }
         }
+      },
+      descricao: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: { msg: "A descrição deve ser preenchida!" },
+          len: { args: [3, 100], msg: "A descrição deve ter entre 3 e 100 caracteres!" }
+        }
       }
     }, { sequelize, modelName: 'certificado', tableName: 'certificados' })
   }
