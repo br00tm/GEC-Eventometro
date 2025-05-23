@@ -170,21 +170,15 @@ class PresencaService {
       errors.push("ID do evento é obrigatório");
     }
 
+    // Se há erros de validação básica, lança antes de consultar o banco
+    if (errors.length > 0) {
+      throw new Error(errors.join("; "));
+    }
+
     try {
       const obj = await Presenca.findByPk(id);
       if (!obj) {
-        errors.push("Presença não encontrada");
-      }
-
-      // Verificar regras de negócio que envolvem consultas ao banco
-      if (errors.length === 0) {
-        const regrasErrors = await this.verificarRegrasDeNegocio(req);
-        errors.push(...regrasErrors);
-      }
-
-      // Se há erros, lança todos juntos
-      if (errors.length > 0) {
-        throw new Error(errors.join("; "));
+        throw new Error("Presença não encontrada");
       }
 
       const t = await sequelize.transaction();
@@ -218,7 +212,7 @@ class PresencaService {
         throw new Error(String(error));
       }
     }
-  }
+}
 
   static async delete(req, res) {
     const { id } = req.params;
