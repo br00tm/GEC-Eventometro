@@ -1,7 +1,9 @@
 import express from "express";
 import routes from './routes.js';
-import errorHandler from './_middleware/error-handler.js';
-import './config/database.js';
+import errorHandler from '../src/_middleware/error-handler.js';
+
+// Importando configuração e estabelecimento da conexão com o banco de dados
+import sequelize from './config/database-connection.js';
 
 const app = express();
 
@@ -14,10 +16,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.json());
-app.use(routes); 
+// Limite máximo de request aumentado
+app.use(express.json({limit: '10mb'}));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
+app.use(routes);
+app.use(errorHandler); // Manipulador de erro global (error handler)
 
-app.use(errorHandler);
-
-app.listen(3333, () => console.log("Server is running on PORT 3333")); 
+app.listen(3333);
