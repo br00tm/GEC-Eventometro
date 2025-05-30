@@ -4,7 +4,7 @@ import { Avaliacao } from "../models/Avaliacao.js";
 import { Participante } from "../models/Participante.js";
 import { Evento } from "../models/Evento.js";
 import { Presenca } from "../models/Presenca.js";
-import sequelize from '../config/database.js';
+import sequelize from '../config/database-connection.js';
 import { QueryTypes } from 'sequelize';
 
 

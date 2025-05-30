@@ -7,7 +7,7 @@ import { Presenca } from "../models/Presenca.js";
 import fs from 'fs';
 import path from 'path';
 
-import sequelize from '../config/database.js';
+import sequelize from '../config/database-connection.js';
 import { QueryTypes } from 'sequelize';
 
 class CertificadoService {

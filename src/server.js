@@ -1,7 +1,6 @@
 import express from "express";
 import routes from './routes.js';
 import errorHandler from './_middleware/error-handler.js';
-
 import './config/database.js';
 
 const app = express();

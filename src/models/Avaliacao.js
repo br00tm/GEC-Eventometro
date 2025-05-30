@@ -4,7 +4,7 @@ class Avaliacao extends Model {
   static init(sequelize) {
     super.init({
       nota: { 
-        type: DataTypes.INTEGER, 
+        type: DataTypes.FLOAT, // Alterado de INTEGER para FLOAT
         validate: {
           notEmpty: { msg: "Nota da Avaliação deve ser preenchida!" },
           min: { args: [0], msg: "Nota mínima é 0!" },

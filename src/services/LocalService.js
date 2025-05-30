@@ -1,5 +1,5 @@
 import { Local } from "../models/Local.js";
-import sequelize from "../config/database.js";
+import sequelize from "../config/database-connection.js";
 import { QueryTypes } from "sequelize";
 
 //PEDRO GOMES

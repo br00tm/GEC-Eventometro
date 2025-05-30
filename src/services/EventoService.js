@@ -1,9 +1,8 @@
 import { Evento } from "../models/Evento.js";
 import { Local } from "../models/Local.js";
-import  sequelize  from "../config/database.js";
+import sequelize from "../config/database-connection.js";
 import { QueryTypes } from "sequelize";
 
-//PEDRO GOMES
 class EventoService {
   
   static async findAll(req, res) {
@@ -13,65 +12,6 @@ class EventoService {
       ]
     });
     return objs;
-  }
-
-  static async findEventosPorPeriodo(req) {
-    const { inicio, termino } = req.query;
-    
-    let query = `
-      SELECT eventos.id, eventos.nome, eventos.data, 
-            locais.nome AS local_nome, locais.cidade, locais.lotacao,
-            COUNT(DISTINCT evento_palestrante.palestranteId) AS num_palestrantes,
-            COUNT(DISTINCT evento_patrocinador.patrocinadorId) AS num_patrocinadores
-      FROM eventos
-      LEFT JOIN locais ON eventos.local_id = locais.id
-      LEFT JOIN evento_palestrante ON eventos.id = evento_palestrante.eventoId
-      LEFT JOIN evento_patrocinador ON eventos.id = evento_patrocinador.eventoId
-      WHERE 1=1`;
-    
-    const replacements = {};
-    
-    if (inicio) {
-      query += " AND eventos.data >= :inicio";
-      replacements.inicio = inicio;
-    }
-    
-    if (termino) {
-      query += " AND eventos.data <= :termino";
-      replacements.termino = termino;
-    }
-    
-    query += " GROUP BY eventos.id, eventos.nome, eventos.data, locais.nome, locais.cidade, locais.lotacao";
-    query += " ORDER BY eventos.data DESC";
-    
-    const eventos = await sequelize.query(query, { 
-      replacements,
-      type: QueryTypes.SELECT 
-    });
-    
-    return eventos;
-  }
-
-  static async findEventosComEstatisticas() {
-    const eventos = await sequelize.query(
-      `SELECT eventos.id, eventos.nome, eventos.data, 
-              locais.nome AS local_nome, locais.cidade, locais.lotacao,
-              COUNT(DISTINCT evento_palestrante.palestranteId) AS num_palestrantes,
-              COUNT(DISTINCT evento_patrocinador.patrocinadorId) AS num_patrocinadores,
-              COUNT(DISTINCT certificados.id) AS num_certificados,
-              COUNT(DISTINCT presencas.id) AS num_presencas
-      FROM eventos
-      LEFT JOIN locais ON eventos.local_id = locais.id
-      LEFT JOIN evento_palestrante ON eventos.id = evento_palestrante.eventoId
-      LEFT JOIN evento_patrocinador ON eventos.id = evento_patrocinador.eventoId
-      LEFT JOIN certificados ON eventos.id = certificados.evento_id
-      LEFT JOIN presencas ON eventos.id = presencas.evento_id
-      GROUP BY eventos.id, eventos.nome, eventos.data, locais.nome, locais.cidade, locais.lotacao
-      ORDER BY eventos.data DESC`,
-      { type: QueryTypes.SELECT }
-    );
-    
-    return eventos;
   }
 
   static async findByPk(req, res) {
@@ -155,6 +95,134 @@ class EventoService {
       return obj;
     } catch (error) {
       throw new Error("Não foi possível remover este evento");
+    }
+  }
+
+  // Relatórios
+
+  static async findEventosPorPeriodo(req) {
+    const { inicio, termino } = req.query;
+    
+    let query = `
+      SELECT eventos.id, eventos.nome, eventos.data, 
+             locais.nome AS local_nome, locais.cidade, locais.lotacao
+      FROM eventos
+      LEFT JOIN locais ON eventos.local_id = locais.id
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (inicio) {
+      query += " AND eventos.data >= :inicio";
+      replacements.inicio = inicio;
+    }
+    
+    if (termino) {
+      query += " AND eventos.data <= :termino";
+      replacements.termino = termino;
+    }
+    
+    query += " ORDER BY eventos.data DESC";
+    
+    const eventos = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return eventos;
+  }
+
+  static async findEventosComEstatisticas() {
+    // Primeiro, verificamos a estrutura da tabela para usar os nomes corretos das colunas
+    try {
+      const query = `
+        SELECT eventos.id, eventos.nome, eventos.data, 
+               locais.nome AS local_nome, locais.cidade, locais.lotacao,
+               COUNT(DISTINCT certificados.id) AS num_certificados,
+               COUNT(DISTINCT presencas.id) AS num_presencas
+        FROM eventos
+        LEFT JOIN locais ON eventos.local_id = locais.id
+        LEFT JOIN certificados ON eventos.id = certificados.evento_id
+        LEFT JOIN presencas ON eventos.id = presencas.evento_id
+        GROUP BY eventos.id, eventos.nome, eventos.data, locais.nome, locais.cidade, locais.lotacao
+        ORDER BY eventos.data DESC`;
+      
+      const eventos = await sequelize.query(query, { type: QueryTypes.SELECT });
+      
+      // Agora obtemos as contagens de palestrantes e patrocinadores separadamente
+      // pois podem usar nomes de colunas diferentes na tabela de junção
+      for (const evento of eventos) {
+        // Contagem de palestrantes
+        try {
+          const palestrantesQuery = `
+            SELECT COUNT(DISTINCT palestrante_id) as count
+            FROM evento_palestrante
+            WHERE evento_id = :eventoId`;
+          
+          const palestrantesResult = await sequelize.query(palestrantesQuery, { 
+            replacements: { eventoId: evento.id },
+            type: QueryTypes.SELECT 
+          });
+          
+          evento.num_palestrantes = palestrantesResult[0]?.count || 0;
+        } catch (error) {
+          // Se falhar, tente com nomes de colunas em camelCase
+          try {
+            const palestrantesQuery = `
+              SELECT COUNT(DISTINCT palestranteId) as count
+              FROM evento_palestrante
+              WHERE eventoId = :eventoId`;
+            
+            const palestrantesResult = await sequelize.query(palestrantesQuery, { 
+              replacements: { eventoId: evento.id },
+              type: QueryTypes.SELECT 
+            });
+            
+            evento.num_palestrantes = palestrantesResult[0]?.count || 0;
+          } catch (innerError) {
+            console.error("Erro ao contar palestrantes:", innerError);
+            evento.num_palestrantes = 0;
+          }
+        }
+        
+        // Contagem de patrocinadores
+        try {
+          const patrocinadoresQuery = `
+            SELECT COUNT(DISTINCT patrocinador_id) as count
+            FROM evento_patrocinador
+            WHERE evento_id = :eventoId`;
+          
+          const patrocinadoresResult = await sequelize.query(patrocinadoresQuery, { 
+            replacements: { eventoId: evento.id },
+            type: QueryTypes.SELECT 
+          });
+          
+          evento.num_patrocinadores = patrocinadoresResult[0]?.count || 0;
+        } catch (error) {
+          // Se falhar, tente com nomes de colunas em camelCase
+          try {
+            const patrocinadoresQuery = `
+              SELECT COUNT(DISTINCT patrocinadorId) as count
+              FROM evento_patrocinador
+              WHERE eventoId = :eventoId`;
+            
+            const patrocinadoresResult = await sequelize.query(patrocinadoresQuery, { 
+              replacements: { eventoId: evento.id },
+              type: QueryTypes.SELECT 
+            });
+            
+            evento.num_patrocinadores = patrocinadoresResult[0]?.count || 0;
+          } catch (innerError) {
+            console.error("Erro ao contar patrocinadores:", innerError);
+            evento.num_patrocinadores = 0;
+          }
+        }
+      }
+      
+      return eventos;
+    } catch (error) {
+      console.error("Erro ao obter estatísticas de eventos:", error);
+      throw error;
     }
   }
 }
