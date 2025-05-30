@@ -5,6 +5,518 @@ meta:
   created: 1748001365835
   modified: 1748001365835
 collection:
+  - name: Relatórios
+    meta:
+      id: fld_0d843ad2908c40b49d01b987859d3de6
+      created: 1715000000000
+      modified: 1715000000000
+      sortKey: -1715000000000
+      description: Todos os relatórios e consultas avançadas do sistema
+    children:
+      - name: Palestrantes
+        meta:
+          id: fld_38003c85020d4b95a8e05a391618cab8
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1713000000000
+          description: Relatórios relacionados a Palestrantes
+        children:
+          - url: http://localhost:3333/palestrantes/eventos
+            name: Palestrantes por Evento
+            meta:
+              id: req_1ba74959b2614331acc7aebcf90e3acc
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Relatório de palestrantes filtrados por evento
+              sortKey: -1715000000000
+            method: GET
+            parameters:
+              - name: eventoId
+                value: "1"
+                description: ID do evento para filtrar
+                id: pair_1
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/palestrantes/resumo-participacao
+            name: Resumo de Participação de Palestrantes
+            meta:
+              id: req_667e2f83b88745798ee273756843bb55
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna um resumo da participação de cada palestrante em eventos
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Funcionários
+        meta:
+          id: fld_466ae0fbe14846d68f76b42329961bf7
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1712500000000
+          description: Relatórios relacionados a Funcionários
+        children:
+          - url: http://localhost:3333/funcionarios/resumo-participacao
+            name: Resumo de Participação de Funcionários
+            meta:
+              id: req_0b60e6df6ad84363bcbb122d05253268
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna um resumo da participação de cada funcionário em eventos
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/funcionarios/eventos
+            name: Funcionários por Evento
+            meta:
+              id: req_279c66c49c3c42b89bc5b0ce29edeeb4
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Relatório de funcionários filtrados por evento
+              sortKey: -1715000000000
+            method: GET
+            parameters:
+              - name: eventoId
+                value: "1"
+                description: ID do evento para filtrar
+                id: pair_1
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Certificados
+        meta:
+          id: fld_84a8ccdadac442ac9b14f65984347422
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1713500000000
+          description: Relatórios relacionados a Certificados
+        children:
+          - url: http://localhost:3333/certificados/resumo-eventos
+            name: Resumo de Certificados por Evento
+            meta:
+              id: req_1e0d11c8557841acb622648ac15dd5a6
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna um resumo dos certificados emitidos por evento
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/certificados/filtro
+            name: Certificados com Filtros
+            meta:
+              id: req_25fc62ddca45410fabddb5d233c7cf98
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Relatório de certificados com múltiplos filtros
+              sortKey: -1715000000000
+            method: GET
+            parameters:
+              - name: eventoId
+                value: "1"
+                description: ID do evento para filtrar
+                id: pair_1
+              - name: participanteId
+                value: "1"
+                description: ID do participante para filtrar
+                id: pair_2
+              - name: tipo_certificado
+                value: Participação
+                description: Tipo de certificado para filtrar
+                id: pair_3
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Locais
+        meta:
+          id: fld_a3fd6a0bf3ea4efcbd58263800748060
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1715000000000
+          description: Relatórios relacionados a Locais
+        children:
+          - url: http://localhost:3333/locais/1/eventos
+            name: Eventos por Local Específico
+            meta:
+              id: req_3f9fd247ab354ac0aef56e5573e3fa26
+              created: 1715000000000
+              modified: 1748605501731
+              isPrivate: false
+              description: Retorna todos os eventos realizados em um local específico
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/locais/eventos
+            name: Quantidade de Eventos por Local
+            meta:
+              id: req_f6d468dca80243adb0cd5bf6f1087e85
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna todos os locais com a quantidade de eventos realizados em
+                cada um
+              sortKey: -1715000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Presenças
+        meta:
+          id: fld_bbc6c2e0e00244dd950f9106febc9e1b
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1714000000000
+          description: Relatórios relacionados a Presenças
+        children:
+          - url: http://localhost:3333/presencas/resumo-eventos
+            name: Resumo de Presenças por Evento
+            meta:
+              id: req_3819e9c26df74793aa2dc93557975bdc
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna um resumo das presenças por evento
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/presencas/filtro
+            name: Presenças com Filtros
+            meta:
+              id: req_6c5d615fccf742d3bee922ed38a6f5cd
+              created: 1715000000000
+              modified: 1748605633388
+              isPrivate: false
+              description: Relatório de presenças com múltiplos filtros
+              sortKey: -1715000000000
+            method: GET
+            parameters:
+              - name: eventoId
+                value: "1"
+                description: ID do evento para filtrar
+                id: pair_1
+              - name: data
+                value: 2023-11-20
+                description: Data específica para filtrar (formato YYYY-MM-DD)
+                id: pair_2
+              - name: participanteId
+                value: "1"
+                description: ID do participante para filtrar
+                id: pair_3
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Eventos
+        meta:
+          id: fld_be813fcc0377462e838605a76425b846
+          created: 1715000000000
+          modified: 1715000000000
+          sortKey: -1714500000000
+          description: Relatórios relacionados a Eventos
+        children:
+          - url: http://localhost:3333/eventos/estatisticas
+            name: Estatísticas Completas de Eventos
+            meta:
+              id: req_0dcbc90ad5ec4d98a6446697045899bb
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Retorna todos os eventos com estatísticas detalhadas
+              sortKey: -1714500000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/eventos/relatorio-periodo
+            name: Eventos por Período
+            meta:
+              id: req_f493b4b6e71d4b5fad3b72f936f9aca8
+              created: 1715000000000
+              modified: 1715000000000
+              isPrivate: false
+              description: Relatório de eventos filtrados por período
+              sortKey: -1715000000000
+            method: GET
+            parameters:
+              - name: inicio
+                value: 2023-01-01
+                description: Data inicial no formato YYYY-MM-DD
+                id: pair_1
+              - name: termino
+                value: 2023-12-31
+                description: Data final no formato YYYY-MM-DD
+                id: pair_2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: Listagens Básicas
+    meta:
+      id: fld_307cd9f9a7764b6189b0c84b7362ba85
+      created: 1716000000000
+      modified: 1716000000000
+      sortKey: -1716000000000
+      description: Endpoints básicos de listagem que já existem no sistema
+    children:
+      - name: Funcionários
+        meta:
+          id: fld_6b1251a87dc6409291907a49b6ddeb4a
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1713500000000
+        children:
+          - url: http://localhost:3333/funcionario
+            name: Listar Todos os Funcionários
+            meta:
+              id: req_632de36a3b954d419a2bc48b9b6e0361
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todos os funcionários cadastrados no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Presenças
+        meta:
+          id: fld_6cd7021d03b045f29ed685bbc9c20640
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1715000000000
+        children:
+          - url: http://localhost:3333/presenca
+            name: Listar Todas as Presenças
+            meta:
+              id: req_352a9c37fc6a4a3d86c6164766dfa31e
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todas as presenças cadastradas no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Eventos
+        meta:
+          id: fld_7ee1cf04f24e4c59bb55e08bd85f15ec
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1715500000000
+        children:
+          - url: http://localhost:3333/evento
+            name: Listar Todos os Eventos
+            meta:
+              id: req_a75eee7439fb4a63a3082fe2df2d4580
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todos os eventos cadastrados no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/evento/1
+            name: Buscar Evento por ID
+            meta:
+              id: req_ef6d83dab9b14e9393fcecd769ca5911
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna um evento específico por ID
+              sortKey: -1715900000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Palestrantes
+        meta:
+          id: fld_a42e9c911e854149ab33898f08044deb
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1714000000000
+        children:
+          - url: http://localhost:3333/palestrante
+            name: Listar Todos os Palestrantes
+            meta:
+              id: req_315672bc33df4840872510bdac0b8f15
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todos os palestrantes cadastrados no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Locais
+        meta:
+          id: fld_ae648478acd143f39cd6f90bca9f5c3f
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1716000000000
+        children:
+          - url: http://localhost:3333/local/1
+            name: Buscar Local por ID
+            meta:
+              id: req_96d1b2a8b2a5455bb31caf29815c0b50
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna um local específico por ID
+              sortKey: -1715900000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3333/local
+            name: Listar Todos os Locais
+            meta:
+              id: req_9d8c3e902e44471b9d8b636e55d5720a
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todos os locais cadastrados no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Certificados
+        meta:
+          id: fld_fc853cfabd334db1b18782947e0e944c
+          created: 1716000000000
+          modified: 1716000000000
+          sortKey: -1714500000000
+        children:
+          - url: http://localhost:3333/certificado
+            name: Listar Todos os Certificados
+            meta:
+              id: req_be047ae0e97c44f5b071070a4cb50f0e
+              created: 1716000000000
+              modified: 1716000000000
+              isPrivate: false
+              description: Retorna todos os certificados cadastrados no sistema
+              sortKey: -1716000000000
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
   - name: Local
     meta:
       id: fld_c18f8bb9a6bd4c8f9a65907e65e52076
@@ -220,7 +732,7 @@ collection:
         meta:
           id: req_bc7d6e2d7e124613af658cb2c494b6ae
           created: 1744378428893
-          modified: 1744378595120
+          modified: 1748609791400
           isPrivate: false
           sortKey: -1744377972694
         method: POST
@@ -228,7 +740,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "nome": "Hackathon de Inovação",
+              "nome": "Hackathon de Inovação2",
               "data": "2023-10-25",
               "local_id": 1
             }
@@ -974,7 +1486,7 @@ collection:
     meta:
       id: fld_7c607a3005444d7388f95a72ebbeae06
       created: 1747396015155
-      modified: 1748005506509
+      modified: 1748608824976
       sortKey: -1747396982351
     children:
       - url: http://localhost:3333/presenca
@@ -982,7 +1494,7 @@ collection:
         meta:
           id: req_8efcdafe754140689d7b423cf5fefbe4
           created: 1747396023885
-          modified: 1747404935853
+          modified: 1748009818044
           isPrivate: false
           sortKey: -1747396023885
         method: POST
@@ -1108,7 +1620,7 @@ collection:
         meta:
           id: req_5826e6e2c7ed4d568484a752d146ebfe
           created: 1747400675887
-          modified: 1747403701457
+          modified: 1748009623957
           isPrivate: false
           sortKey: -1747396023835
         method: POST
@@ -1695,3 +2207,24 @@ environments:
     created: 1744377556626
     modified: 1744377556626
     isPrivate: false
+  subEnvironments:
+    - name: Development
+      meta:
+        id: env_43e68491c3d94198ae47468de3c09e9e
+        created: 1716000000000
+        modified: 1716000000000
+        isPrivate: false
+        sortKey: 1716000000000
+      data:
+        base_url: http://localhost:3333
+      color: "#7d69cb"
+    - name: Production
+      meta:
+        id: env_d18c3b15bd2e4ecbb8351494f7e9119a
+        created: 1716000000000
+        modified: 1716000000000
+        isPrivate: false
+        sortKey: 1715900000000
+      data:
+        base_url: https://api.eventos-app.com
+      color: "#ff0000"
