@@ -8,6 +8,18 @@ class PresencaController {
       .catch(next);
   }
 
+  static async findPresencasComFiltro(req, res, next) {
+    PresencaService.findPresencasComFiltro(req)
+      .then(presencas => res.json(presencas))
+      .catch(next);
+  }
+
+  static async findResumoPresencasPorEvento(req, res, next) {
+    PresencaService.findResumoPresencasPorEvento()
+      .then(resumo => res.json(resumo))
+      .catch(next);
+  }
+
   static async findByPk(req, res, next) {
     PresencaService.findByPk(req)
       .then(obj => res.json(obj))

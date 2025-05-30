@@ -8,6 +8,18 @@ class EventoController {
       .catch(next);
   }
 
+  static async findEventosPorPeriodo(req, res, next) {
+    EventoService.findEventosPorPeriodo(req)
+      .then(eventos => res.json(eventos))
+      .catch(next);
+  }
+
+  static async findEventosComEstatisticas(req, res, next) {
+    EventoService.findEventosComEstatisticas()
+      .then(eventos => res.json(eventos))
+      .catch(next);
+  }
+
   static async findByPk(req, res, next) {
     EventoService.findByPk(req)
       .then(obj => res.json(obj))

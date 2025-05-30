@@ -1,10 +1,57 @@
 import { Funcionario } from "../models/Funcionario.js";
+import sequelize from "../config/database.js";
+import { QueryTypes } from "sequelize";
+
 //MATEUS DE ANGELI
 class FuncionarioService {
   
   static async findAll(req, res) {
     const objs = await Funcionario.findAll();
     return objs;
+  }
+
+  static async findFuncionariosPorEvento(req) {
+    const { eventoId } = req.query;
+    
+    let query = `
+      SELECT DISTINCT funcionarios.id, funcionarios.nome, 
+            funcionarios.cargo, funcionarios.matricula,
+            funcionarios.carga_horaria,
+            eventos.nome AS evento_nome, eventos.data AS evento_data
+      FROM funcionarios
+      INNER JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionarioId
+      INNER JOIN eventos ON evento_funcionario.eventoId = eventos.id
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (eventoId) {
+      query += " AND eventos.id = :eventoId";
+      replacements.eventoId = eventoId;
+    }
+    
+    query += " ORDER BY funcionarios.nome ASC";
+    
+    const funcionarios = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return funcionarios;
+  }
+
+  static async findResumoFuncionariosParticipacao() {
+    const resumo = await sequelize.query(
+      `SELECT funcionarios.id, funcionarios.nome, funcionarios.cargo,
+              COUNT(DISTINCT evento_funcionario.eventoId) AS total_eventos
+      FROM funcionarios
+      LEFT JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionarioId
+      GROUP BY funcionarios.id, funcionarios.nome, funcionarios.cargo
+      ORDER BY total_eventos DESC, funcionarios.nome ASC`,
+      { type: QueryTypes.SELECT }
+    );
+    
+    return resumo;
   }
 
   static async findByPk(req, res) {

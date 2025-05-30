@@ -17,6 +17,62 @@ class CertificadoService {
     return objs;
   }
 
+  static async findCertificadosComFiltro(req) {
+    const { eventoId, participanteId, tipo_certificado } = req.query;
+    
+    let query = `
+      SELECT certificados.id, certificados.nome, certificados.data_emissao, 
+            certificados.cod_validacao, certificados.tipo_certificado,
+            participantes.nome AS participante_nome, 
+            participantes.email AS participante_email,
+            eventos.nome AS evento_nome, eventos.data AS evento_data
+      FROM certificados
+      INNER JOIN participantes ON certificados.participante_id = participantes.id
+      LEFT JOIN eventos ON certificados.evento_id = eventos.id
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (eventoId) {
+      query += " AND certificados.evento_id = :eventoId";
+      replacements.eventoId = eventoId;
+    }
+    
+    if (participanteId) {
+      query += " AND certificados.participante_id = :participanteId";
+      replacements.participanteId = participanteId;
+    }
+    
+    if (tipo_certificado) {
+      query += " AND certificados.tipo_certificado = :tipo_certificado";
+      replacements.tipo_certificado = tipo_certificado;
+    }
+    
+    query += " ORDER BY certificados.data_emissao DESC";
+    
+    const certificados = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return certificados;
+  }
+
+  static async findResumoCertificadosPorEvento() {
+    const resumo = await sequelize.query(
+      `SELECT eventos.id, eventos.nome, eventos.data,
+              COUNT(certificados.id) AS total_certificados,
+              COUNT(DISTINCT certificados.participante_id) AS total_participantes
+      FROM eventos
+      LEFT JOIN certificados ON eventos.id = certificados.evento_id
+      GROUP BY eventos.id, eventos.nome, eventos.data
+      ORDER BY eventos.data DESC`,
+      { type: QueryTypes.SELECT }
+    );
+    
+    return resumo;
+  }
+
   static async findByPk(req) {
     const { id } = req.params;
     const obj = await Certificado.findByPk(id, { include: { all: true, nested: true } });

@@ -8,6 +8,18 @@ class PalestranteController {
       .catch(next);
   }
 
+  static async findPalestrantesPorEvento(req, res, next) {
+    PalestranteService.findPalestrantesPorEvento(req)
+      .then(palestrantes => res.json(palestrantes))
+      .catch(next);
+  }
+
+  static async findResumoPalestrantesParticipacao(req, res, next) {
+    PalestranteService.findResumoPalestrantesParticipacao()
+      .then(resumo => res.json(resumo))
+      .catch(next);
+  }
+
   static async findByPk(req, res, next) {
     PalestranteService.findByPk(req)
       .then(obj => res.json(obj))

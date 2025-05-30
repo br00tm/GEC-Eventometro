@@ -19,6 +19,63 @@ class PresencaService {
     return objs;
   }
 
+  static async findPresencasComFiltro(req) {
+    const { eventoId, data, participanteId } = req.query;
+    
+    let query = `
+      SELECT presencas.id, presencas.data, presencas.horario, 
+            presencas.tipo_presenca, presencas.modo_registro,
+            participantes.nome AS participante_nome, 
+            participantes.email AS participante_email,
+            eventos.nome AS evento_nome, eventos.data AS evento_data
+      FROM presencas
+      INNER JOIN participantes ON presencas.participante_id = participantes.id
+      LEFT JOIN eventos ON presencas.evento_id = eventos.id
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (eventoId) {
+      query += " AND presencas.evento_id = :eventoId";
+      replacements.eventoId = eventoId;
+    }
+    
+    if (data) {
+      query += " AND presencas.data = :data";
+      replacements.data = data;
+    }
+    
+    if (participanteId) {
+      query += " AND presencas.participante_id = :participanteId";
+      replacements.participanteId = participanteId;
+    }
+    
+    query += " ORDER BY presencas.data DESC, presencas.horario ASC";
+    
+    const presencas = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return presencas;
+  }
+
+  // Método para resumo de presenças por evento
+  static async findResumoPresencasPorEvento() {
+    const resumo = await sequelize.query(
+      `SELECT eventos.id, eventos.nome, eventos.data,
+              COUNT(presencas.id) AS total_presencas,
+              COUNT(DISTINCT presencas.participante_id) AS total_participantes
+      FROM eventos
+      LEFT JOIN presencas ON eventos.id = presencas.evento_id
+      GROUP BY eventos.id, eventos.nome, eventos.data
+      ORDER BY eventos.data DESC`,
+      { type: QueryTypes.SELECT }
+    );
+    
+    return resumo;
+  }
+
   static async findByPk(req, res) {
     const { id } = req.params;
     const obj = await Presenca.findByPk(id, {

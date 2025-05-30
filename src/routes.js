@@ -74,4 +74,28 @@ routes.post('/funcionario', FuncionarioController.create);
 routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
 
+// Rotas para relatórios de Local
+routes.get('/locais/eventos', LocalController.findEventosPorLocal);
+routes.get('/locais/:id/eventos', LocalController.findEventosByLocalId);
+
+// Rotas para relatórios de Evento
+routes.get('/eventos/relatorio-periodo', EventoController.findEventosPorPeriodo);
+routes.get('/eventos/estatisticas', EventoController.findEventosComEstatisticas);
+
+// Rotas para relatórios de Presença
+routes.get('/presencas/filtro', PresencaController.findPresencasComFiltro);
+routes.get('/presencas/resumo-eventos', PresencaController.findResumoPresencasPorEvento);
+
+// Rotas para relatórios de Certificado
+routes.get('/certificados/filtro', CertificadoController.findCertificadosComFiltro);
+routes.get('/certificados/resumo-eventos', CertificadoController.findResumoCertificadosPorEvento);
+
+// Rotas para relatórios de Palestrante
+routes.get('/palestrantes/eventos', PalestranteController.findPalestrantesPorEvento);
+routes.get('/palestrantes/resumo-participacao', PalestranteController.findResumoPalestrantesParticipacao);
+
+// Rotas para relatórios de Funcionário
+routes.get('/funcionarios/eventos', FuncionarioController.findFuncionariosPorEvento);
+routes.get('/funcionarios/resumo-participacao', FuncionarioController.findResumoFuncionariosParticipacao);
+
 export default routes;

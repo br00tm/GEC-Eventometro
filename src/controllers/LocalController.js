@@ -2,9 +2,22 @@ import { LocalService } from "../services/LocalService.js";
 //PEDRO GOMES
 class LocalController {
 
+  
   static async findAll(req, res, next) {
     LocalService.findAll()
       .then(objs => res.json(objs))
+      .catch(next);
+  }
+
+  static async findEventosPorLocal(req, res, next) {
+    LocalService.findEventosPorLocal()
+      .then(eventos => res.json(eventos))
+      .catch(next);
+  }
+
+  static async findEventosByLocalId(req, res, next) {
+    LocalService.findEventosByLocalId(req)
+      .then(eventos => res.json(eventos))
       .catch(next);
   }
 

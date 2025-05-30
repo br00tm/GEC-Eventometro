@@ -1,10 +1,46 @@
 import { Local } from "../models/Local.js";
+import sequelize from "../config/database.js";
+import { QueryTypes } from "sequelize";
+
 //PEDRO GOMES
 class LocalService {
   
+// Método existente findAll
   static async findAll(req, res) {
     const objs = await Local.findAll();
     return objs;
+  }
+
+  // Novo método para listar quantidade de eventos por local
+  static async findEventosPorLocal() {
+    const eventosLocal = await sequelize.query(
+      `SELECT locais.id, locais.nome, locais.cidade, locais.uf, locais.bairro, locais.lotacao,
+              COUNT(eventos.id) AS quantidade_eventos
+      FROM locais
+      LEFT JOIN eventos ON locais.id = eventos.local_id
+      GROUP BY locais.id, locais.nome, locais.cidade, locais.uf, locais.bairro, locais.lotacao
+      ORDER BY quantidade_eventos DESC, locais.nome ASC`,
+      { type: QueryTypes.SELECT }
+    );
+    return eventosLocal;
+  }
+
+  // Novo método para listar eventos de um local específico
+  static async findEventosByLocalId(req) {
+    const { id } = req.params;
+    const eventos = await sequelize.query(
+      `SELECT eventos.id, eventos.nome, eventos.data,
+              locais.nome AS local_nome, locais.cidade, locais.uf
+      FROM eventos
+      INNER JOIN locais ON eventos.local_id = locais.id
+      WHERE locais.id = :id
+      ORDER BY eventos.data DESC`,
+      { 
+        replacements: { id },
+        type: QueryTypes.SELECT 
+      }
+    );
+    return eventos;
   }
 
   static async findByPk(req, res) {

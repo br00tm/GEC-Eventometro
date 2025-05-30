@@ -1,6 +1,8 @@
 import { Evento } from "../models/Evento.js";
 import { Local } from "../models/Local.js";
 import  sequelize  from "../config/database.js";
+import { QueryTypes } from "sequelize";
+
 //PEDRO GOMES
 class EventoService {
   
@@ -11,6 +13,65 @@ class EventoService {
       ]
     });
     return objs;
+  }
+
+  static async findEventosPorPeriodo(req) {
+    const { inicio, termino } = req.query;
+    
+    let query = `
+      SELECT eventos.id, eventos.nome, eventos.data, 
+            locais.nome AS local_nome, locais.cidade, locais.lotacao,
+            COUNT(DISTINCT evento_palestrante.palestranteId) AS num_palestrantes,
+            COUNT(DISTINCT evento_patrocinador.patrocinadorId) AS num_patrocinadores
+      FROM eventos
+      LEFT JOIN locais ON eventos.local_id = locais.id
+      LEFT JOIN evento_palestrante ON eventos.id = evento_palestrante.eventoId
+      LEFT JOIN evento_patrocinador ON eventos.id = evento_patrocinador.eventoId
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (inicio) {
+      query += " AND eventos.data >= :inicio";
+      replacements.inicio = inicio;
+    }
+    
+    if (termino) {
+      query += " AND eventos.data <= :termino";
+      replacements.termino = termino;
+    }
+    
+    query += " GROUP BY eventos.id, eventos.nome, eventos.data, locais.nome, locais.cidade, locais.lotacao";
+    query += " ORDER BY eventos.data DESC";
+    
+    const eventos = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return eventos;
+  }
+
+  static async findEventosComEstatisticas() {
+    const eventos = await sequelize.query(
+      `SELECT eventos.id, eventos.nome, eventos.data, 
+              locais.nome AS local_nome, locais.cidade, locais.lotacao,
+              COUNT(DISTINCT evento_palestrante.palestranteId) AS num_palestrantes,
+              COUNT(DISTINCT evento_patrocinador.patrocinadorId) AS num_patrocinadores,
+              COUNT(DISTINCT certificados.id) AS num_certificados,
+              COUNT(DISTINCT presencas.id) AS num_presencas
+      FROM eventos
+      LEFT JOIN locais ON eventos.local_id = locais.id
+      LEFT JOIN evento_palestrante ON eventos.id = evento_palestrante.eventoId
+      LEFT JOIN evento_patrocinador ON eventos.id = evento_patrocinador.eventoId
+      LEFT JOIN certificados ON eventos.id = certificados.evento_id
+      LEFT JOIN presencas ON eventos.id = presencas.evento_id
+      GROUP BY eventos.id, eventos.nome, eventos.data, locais.nome, locais.cidade, locais.lotacao
+      ORDER BY eventos.data DESC`,
+      { type: QueryTypes.SELECT }
+    );
+    
+    return eventos;
   }
 
   static async findByPk(req, res) {

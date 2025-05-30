@@ -1,10 +1,58 @@
 import { Palestrante } from "../models/Palestrante.js";
+import sequelize from "../config/database.js";
+import { QueryTypes } from "sequelize";
+
 //MATEUS DE ANGELI
 class PalestranteService {
   
   static async findAll(req, res) {
     const objs = await Palestrante.findAll();
     return objs;
+  }
+
+  static async findPalestrantesPorEvento(req) {
+    const { eventoId } = req.query;
+    
+    let query = `
+      SELECT DISTINCT palestrantes.id, palestrantes.nome, 
+            palestrantes.email, palestrantes.especialidade,
+            palestrantes.nome_palestra,
+            eventos.nome AS evento_nome, eventos.data AS evento_data
+      FROM palestrantes
+      INNER JOIN evento_palestrante ON palestrantes.id = evento_palestrante.palestranteId
+      INNER JOIN eventos ON evento_palestrante.eventoId = eventos.id
+      WHERE 1=1`;
+    
+    const replacements = {};
+    
+    if (eventoId) {
+      query += " AND eventos.id = :eventoId";
+      replacements.eventoId = eventoId;
+    }
+    
+    query += " ORDER BY palestrantes.nome ASC";
+    
+    const palestrantes = await sequelize.query(query, { 
+      replacements,
+      type: QueryTypes.SELECT 
+    });
+    
+    return palestrantes;
+  }
+
+
+  static async findResumoPalestrantesParticipacao() {
+    const resumo = await sequelize.query(
+      `SELECT palestrantes.id, palestrantes.nome, palestrantes.especialidade,
+              COUNT(DISTINCT evento_palestrante.eventoId) AS total_eventos
+      FROM palestrantes
+      LEFT JOIN evento_palestrante ON palestrantes.id = evento_palestrante.palestranteId
+      GROUP BY palestrantes.id, palestrantes.nome, palestrantes.especialidade
+      ORDER BY total_eventos DESC, palestrantes.nome ASC`,
+      { type: QueryTypes.SELECT }
+    );
+    
+    return resumo;
   }
 
   static async findByPk(req, res) {
