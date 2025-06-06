@@ -34,6 +34,7 @@ routes.delete('/avaliacao/:id', AvaliacaoController.delete);
 
 // Rotas para Certificado
 routes.get('/certificado', CertificadoController.findAll);
+routes.get('/certificado/gerar/:id', CertificadoController.gerarCertificado);
 routes.get('/certificado/:id', CertificadoController.findByPk);
 routes.post('/certificado', CertificadoController.create);
 routes.put('/certificado/:id', CertificadoController.update);

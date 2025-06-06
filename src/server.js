@@ -7,12 +7,25 @@ import sequelize from './config/database-connection.js';
 
 const app = express();
 
-// Cabeçalhos adicionados antes que as rotas sejam definidas
+// Configuração CORS aprimorada
 app.use(function (req, res, next) {
+    // Permitir origens específicas ou todas com '*'
     res.setHeader('Access-Control-Allow-Origin', '*');
+    
+    // Métodos HTTP permitidos
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    
+    // Cabeçalhos permitidos (incluindo authorization)
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, authorization, Authorization');
+    
+    // Permitir cookies
     res.setHeader('Access-Control-Allow-Credentials', true);
+    
+    // Lidar com requisições OPTIONS (preflight)
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+    
     next();
 });
 

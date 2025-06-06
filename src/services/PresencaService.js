@@ -91,55 +91,60 @@ class PresencaService {
     const { data, horario, tipo_presenca, modo_registro, participante_id, evento_id } = req.body;
     const errors = [];
     
-    // Validações básicas
-    // Validação da data
-    if (!data) {
-      errors.push("A data é obrigatória");
-    } else {
-      const dataRegex = /^\d{4}-\d{2}-\d{2}$/;
-      if (!dataRegex.test(data)) {
-        errors.push("Data deve seguir o formato yyyy-MM-dd");
-      }
-    }
-
-    // Validação do horário
-    if (!horario) {
-      errors.push("O horário é obrigatório");
-    } else {
-      const horarioRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-      if (!horarioRegex.test(horario)) {
-        errors.push("Horário deve estar no formato HH:MM");
-      }
-    }
-
-    // Validação do tipo de presença
-    if (!tipo_presenca) {
-      errors.push("O tipo de presença é obrigatório");
-    } else if (!["Entrada", "Saída"].includes(tipo_presenca)) {
-      errors.push("O tipo de presença deve ser 'Entrada' ou 'Saída'");
-    }
-
-    // Validação do modo de registro
-    if (!modo_registro) {
-      errors.push("O modo de registro é obrigatório");
-    } else if (!["Manual", "Automático", "QRCode"].includes(modo_registro)) {
-      errors.push("O modo de registro deve ser 'Manual', 'Automático' ou 'QRCode'");
-    }
-
-    // Validação dos IDs
-    if (!participante_id) {
-      errors.push("ID do participante é obrigatório");
-    }
-
-    if (!evento_id) {
-      errors.push("ID do evento é obrigatório");
-    }
-
     try {
+      // Validações básicas
+      // Validação da data
+      if (!data) {
+        errors.push("A data é obrigatória");
+      } else {
+        const dataRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dataRegex.test(data)) {
+          errors.push("Data deve seguir o formato yyyy-MM-dd");
+        }
+      }
+
+      // Validação do horário
+      if (!horario) {
+        errors.push("O horário é obrigatório");
+      } else {
+        const horarioRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+        if (!horarioRegex.test(horario)) {
+          errors.push("Horário deve estar no formato HH:MM");
+        }
+      }
+
+      // Validação do tipo de presença
+      if (!tipo_presenca) {
+        errors.push("O tipo de presença é obrigatório");
+      } else if (!["Entrada", "Saída"].includes(tipo_presenca)) {
+        errors.push("O tipo de presença deve ser 'Entrada' ou 'Saída'");
+      }
+
+      // Validação do modo de registro
+      if (!modo_registro) {
+        errors.push("O modo de registro é obrigatório");
+      } else if (!["Manual", "Automático", "QRCode"].includes(modo_registro)) {
+        errors.push("O modo de registro deve ser 'Manual', 'Automático' ou 'QRCode'");
+      }
+
+      // Validação dos IDs
+      if (!participante_id) {
+        errors.push("ID do participante é obrigatório");
+      }
+
+      if (!evento_id) {
+        errors.push("ID do evento é obrigatório");
+      }
+
       // Verificar regras de negócio que envolvem consultas ao banco
       if (errors.length === 0) {
-        const regrasErrors = await this.verificarRegrasDeNegocio(req);
-        errors.push(...regrasErrors);
+        try {
+          const regrasErrors = await this.verificarRegrasDeNegocio(req);
+          errors.push(...regrasErrors);
+        } catch (regrasError) {
+          console.error("Erro ao verificar regras de negócio:", regrasError);
+          errors.push("Erro ao verificar regras de negócio: " + regrasError.message);
+        }
       }
 
       // Se há erros, lança todos juntos
@@ -149,13 +154,14 @@ class PresencaService {
 
       const t = await sequelize.transaction();
       try {
+        // Garantir que os IDs são números
         const obj = await Presenca.create({ 
           data, 
           horario, 
           tipo_presenca, 
           modo_registro,
-          participante_id,
-          evento_id
+          participante_id: parseInt(participante_id),
+          evento_id: parseInt(evento_id)
         }, { transaction: t });
         
         await t.commit();
@@ -167,9 +173,11 @@ class PresencaService {
         });
       } catch (error) {
         await t.rollback();
+        console.error("Erro ao criar presença:", error);
         throw new Error("Erro ao registrar presença: " + error.message);
       }
     } catch (error) {
+      console.error("Erro geral:", error);
       if (error instanceof Error) {
         throw error;
       } else {
@@ -349,10 +357,11 @@ class PresencaService {
 
       // Verificar se a data da presença é compatível com a data do evento
       if (evento) {
-        const dataEvento = new Date(evento.data);
-        const dataPresenca = new Date(data);
+        // Normalizar as datas para o formato YYYY-MM-DD
+        const dataEventoFormatada = new Date(evento.data).toISOString().split('T')[0];
+        const dataPresencaFormatada = new Date(data).toISOString().split('T')[0];
         
-        if (dataPresenca.toISOString().split('T')[0] !== dataEvento.toISOString().split('T')[0]) {
+        if (dataPresencaFormatada !== dataEventoFormatada) {
           errors.push("A data da presença deve ser igual à data do evento");
         }
       }
@@ -426,8 +435,11 @@ class PresencaService {
       if (eventoInfo.length === 0) {
         errors.push("Evento não encontrado");
       } else {
-        const dataEvento = eventoInfo[0].data;
-        if (data !== dataEvento) {
+        // Normalizar as datas para o formato YYYY-MM-DD
+        const dataEvento = new Date(eventoInfo[0].data).toISOString().split('T')[0];
+        const dataPresenca = new Date(data).toISOString().split('T')[0];
+        
+        if (dataPresenca !== dataEvento) {
           errors.push("Só é possível registrar presença no mesmo dia do evento");
         }
       }

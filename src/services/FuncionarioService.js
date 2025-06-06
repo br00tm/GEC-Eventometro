@@ -90,148 +90,49 @@ class FuncionarioService {
   static async findFuncionariosPorEvento(req) {
     const { eventoId } = req.query;
     
-    // Tentamos primeiro com snake_case (padrão usado com underscored: true)
+    if (!eventoId) {
+      return await this.findAll();
+    }
+    
     try {
-      let query = `
-        SELECT DISTINCT funcionarios.id, funcionarios.nome, 
-               funcionarios.cargo, funcionarios.matricula,
-               funcionarios.carga_horaria,
-               eventos.nome AS evento_nome, eventos.data AS evento_data
-        FROM funcionarios
-        INNER JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionario_id
-        INNER JOIN eventos ON evento_funcionario.evento_id = eventos.id
-        WHERE 1=1`;
+      // Consulta simplificada para encontrar funcionários por evento
+      const query = `
+        SELECT f.id, f.nome, f.cargo, f.matricula, f.carga_horaria
+        FROM funcionarios f
+        JOIN evento_funcionario ef ON f.id = ef.funcionario_id
+        WHERE ef.evento_id = :eventoId
+        ORDER BY f.nome ASC
+      `;
       
-      const replacements = {};
-      
-      if (eventoId) {
-        query += " AND eventos.id = :eventoId";
-        replacements.eventoId = eventoId;
-      }
-      
-      query += " ORDER BY funcionarios.nome ASC";
-      
-      const funcionarios = await sequelize.query(query, { 
-        replacements,
-        type: QueryTypes.SELECT 
+      const funcionarios = await sequelize.query(query, {
+        replacements: { eventoId },
+        type: QueryTypes.SELECT
       });
       
       return funcionarios;
     } catch (error) {
-      console.error("Erro na consulta com snake_case:", error);
-      
-      // Se falhar, tentamos com camelCase (padrão usado sem underscored: true)
-      try {
-        let query = `
-          SELECT DISTINCT funcionarios.id, funcionarios.nome, 
-                 funcionarios.cargo, funcionarios.matricula,
-                 funcionarios.carga_horaria,
-                 eventos.nome AS evento_nome, eventos.data AS evento_data
-          FROM funcionarios
-          INNER JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionarioId
-          INNER JOIN eventos ON evento_funcionario.eventoId = eventos.id
-          WHERE 1=1`;
-        
-        const replacements = {};
-        
-        if (eventoId) {
-          query += " AND eventos.id = :eventoId";
-          replacements.eventoId = eventoId;
-        }
-        
-        query += " ORDER BY funcionarios.nome ASC";
-        
-        const funcionarios = await sequelize.query(query, { 
-          replacements,
-          type: QueryTypes.SELECT 
-        });
-        
-        return funcionarios;
-      } catch (innerError) {
-        console.error("Erro na consulta com camelCase:", innerError);
-        
-        // Se ambas falharem, vamos usar uma consulta alternativa que verifica a estrutura da tabela
-        let tableInfoQuery = "PRAGMA table_info(evento_funcionario);";
-        let tableInfo;
-        
-        try {
-          tableInfo = await sequelize.query(tableInfoQuery, { type: QueryTypes.SELECT });
-          
-          // Determinar os nomes das colunas
-          const eventoColName = tableInfo.find(col => col.name.toLowerCase().includes('evento')) ? 
-                               tableInfo.find(col => col.name.toLowerCase().includes('evento')).name : 'evento_id';
-          
-          const funcionarioColName = tableInfo.find(col => col.name.toLowerCase().includes('funcionario')) ? 
-                                    tableInfo.find(col => col.name.toLowerCase().includes('funcionario')).name : 'funcionario_id';
-          
-          // Usar os nomes corretos das colunas
-          let finalQuery = `
-            SELECT DISTINCT funcionarios.id, funcionarios.nome, 
-                   funcionarios.cargo, funcionarios.matricula,
-                   funcionarios.carga_horaria,
-                   eventos.nome AS evento_nome, eventos.data AS evento_data
-            FROM funcionarios
-            INNER JOIN evento_funcionario ON funcionarios.id = evento_funcionario.${funcionarioColName}
-            INNER JOIN eventos ON evento_funcionario.${eventoColName} = eventos.id
-            WHERE 1=1`;
-          
-          const replacements = {};
-          
-          if (eventoId) {
-            finalQuery += ` AND eventos.id = :eventoId`;
-            replacements.eventoId = eventoId;
-          }
-          
-          finalQuery += " ORDER BY funcionarios.nome ASC";
-          
-          const funcionarios = await sequelize.query(finalQuery, { 
-            replacements,
-            type: QueryTypes.SELECT 
-          });
-          
-          return funcionarios;
-        } catch (finalError) {
-          console.error("Erro ao determinar estrutura da tabela:", finalError);
-          throw new Error("Não foi possível consultar os funcionários por evento");
-        }
-      }
+      console.error("Erro ao buscar funcionários por evento:", error);
+      throw new Error("Não foi possível consultar os funcionários por evento");
     }
   }
 
   static async findResumoFuncionariosParticipacao() {
     try {
-      // Tentamos primeiro com snake_case
+      // Consulta simplificada para encontrar o resumo de participação dos funcionários
       const query = `
-        SELECT funcionarios.id, funcionarios.nome, funcionarios.cargo,
-               COUNT(DISTINCT evento_funcionario.evento_id) AS total_eventos
-        FROM funcionarios
-        LEFT JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionario_id
-        GROUP BY funcionarios.id, funcionarios.nome, funcionarios.cargo
-        ORDER BY total_eventos DESC, funcionarios.nome ASC`;
+        SELECT f.id, f.nome, f.cargo,
+               COUNT(DISTINCT ef.evento_id) AS total_eventos
+        FROM funcionarios f
+        LEFT JOIN evento_funcionario ef ON f.id = ef.funcionario_id
+        GROUP BY f.id, f.nome, f.cargo
+        ORDER BY total_eventos DESC, f.nome ASC
+      `;
       
       const resumo = await sequelize.query(query, { type: QueryTypes.SELECT });
       return resumo;
     } catch (error) {
-      console.error("Erro na consulta com snake_case:", error);
-      
-      // Se falhar, tentamos com camelCase
-      try {
-        const query = `
-          SELECT funcionarios.id, funcionarios.nome, funcionarios.cargo,
-                 COUNT(DISTINCT evento_funcionario.eventoId) AS total_eventos
-          FROM funcionarios
-          LEFT JOIN evento_funcionario ON funcionarios.id = evento_funcionario.funcionarioId
-          GROUP BY funcionarios.id, funcionarios.nome, funcionarios.cargo
-          ORDER BY total_eventos DESC, funcionarios.nome ASC`;
-        
-        const resumo = await sequelize.query(query, { type: QueryTypes.SELECT });
-        return resumo;
-      } catch (innerError) {
-        console.error("Erro na consulta com camelCase:", innerError);
-        
-        // Se ambas falharem, retornamos um resultado vazio com mensagem
-        return [{ mensagem: "Não foi possível obter o resumo de participação dos funcionários" }];
-      }
+      console.error("Erro ao buscar resumo de participação dos funcionários:", error);
+      throw new Error("Não foi possível obter o resumo de participação dos funcionários");
     }
   }
 }

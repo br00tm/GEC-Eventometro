@@ -44,6 +44,21 @@ class CertificadoController {
       .then(obj => res.json(obj))
       .catch(next);
   }
+  
+  // Método para gerar o certificado a partir do ID
+  static async gerarCertificado(req, res, next) {
+    try {
+      const { id } = req.params;
+      if (!id) {
+        return res.status(400).json({ message: "ID do certificado não informado" });
+      }
+      
+      const fileUrl = await CertificadoService.gerarCertificado(id);
+      res.json(fileUrl);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export { CertificadoController };
