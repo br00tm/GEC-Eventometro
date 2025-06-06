@@ -501,8 +501,9 @@ class CertificadoService {
         fs.mkdirSync(certificadosDir, { recursive: true });
       }
 
-      // Gerar nome do arquivo
-      const fileName = `certificado_${certificadoId}.html`;
+      // Gerar nome do arquivo com data e hora para evitar cache
+      const timestamp = new Date().getTime();
+      const fileName = `certificado_${certificadoId}_${timestamp}.html`;
       const filePath = path.join(certificadosDir, fileName);
       
       // URL para acesso via navegador
@@ -518,7 +519,9 @@ class CertificadoService {
       certificado.arquivo_path = fileUrl;
       await certificado.save();
 
-      return fileUrl;
+      // Retornar a URL completa para acesso ao certificado
+      const baseUrl = process.env.BASE_URL || 'http://localhost:3333';
+      return `${baseUrl}${fileUrl}`;
     } catch (error) {
       console.error('Erro ao gerar certificado:', error);
       throw new Error("Erro ao gerar certificado: " + error.message);
@@ -543,20 +546,25 @@ class CertificadoService {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Certificado - ${participante.nome}</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+    
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
     }
+    .page-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
     .certificado-container {
       width: 1000px;
       height: 700px;
-      margin: 20px auto;
+      margin: 0 auto;
       background-color: white;
-      background-image: url('/assets/fundo_certificado.jpg');
-      background-size: cover;
-      background-position: center;
+      background-image: linear-gradient(to bottom right, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M25,25 L75,75 M75,25 L25,75" stroke="%23d4af37" stroke-width="1" opacity="0.2"/></svg>');
       border: 10px solid #d4af37;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       padding: 40px;
@@ -564,22 +572,35 @@ class CertificadoService {
       position: relative;
       color: #333;
     }
+    .certificado-header {
+      margin-bottom: 20px;
+    }
+    .certificado-logo {
+      max-width: 150px;
+      margin-bottom: 10px;
+    }
     .certificado-titulo {
       font-size: 48px;
       color: #333;
       margin-top: 40px;
       font-weight: bold;
       text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     .certificado-subtitulo {
       font-size: 24px;
       margin: 20px 0;
+      color: #555;
     }
     .certificado-nome {
       font-size: 36px;
       margin: 30px 0;
       font-weight: bold;
       color: #000;
+      border-bottom: 2px solid #d4af37;
+      display: inline-block;
+      padding: 0 20px 5px;
     }
     .certificado-texto {
       font-size: 20px;
@@ -590,6 +611,7 @@ class CertificadoService {
       font-size: 18px;
       font-style: italic;
       margin: 30px 80px;
+      color: #555;
     }
     .certificado-footer {
       position: absolute;
@@ -613,16 +635,32 @@ class CertificadoService {
       bottom: 20px;
       right: 40px;
       font-size: 12px;
+      color: #777;
     }
     .certificado-data {
       position: absolute;
       bottom: 20px;
       left: 40px;
       font-size: 12px;
+      color: #777;
+    }
+    .certificado-selo {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      width: 100px;
+      height: 100px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="50" cy="50" r="35" fill="none" stroke="%23d4af37" stroke-width="1"/><text x="50" y="45" text-anchor="middle" fill="%23d4af37" font-size="12">CERTIFICADO</text><text x="50" y="60" text-anchor="middle" fill="%23d4af37" font-size="10">AUTÊNTICO</text></svg>');
+      background-size: contain;
+      opacity: 0.8;
     }
     @media print {
       body {
         background-color: white;
+      }
+      .page-container {
+        padding: 0;
+        margin: 0;
       }
       .certificado-container {
         box-shadow: none;
@@ -631,6 +669,7 @@ class CertificadoService {
         padding: 0;
         width: 100%;
         height: 100vh;
+        page-break-inside: avoid;
       }
       .botoes-controle {
         display: none;
@@ -649,50 +688,80 @@ class CertificadoService {
       cursor: pointer;
       font-size: 16px;
       margin: 0 5px;
+      text-decoration: none;
+      display: inline-block;
     }
     .botao:hover {
       background-color: #45a049;
     }
+    .botao-imprimir {
+      background-color: #2196F3;
+    }
+    .botao-imprimir:hover {
+      background-color: #0b7dda;
+    }
+    .botao-voltar {
+      background-color: #f44336;
+    }
+    .botao-voltar:hover {
+      background-color: #da190b;
+    }
+    .botao-download {
+      background-color: #ff9800;
+    }
+    .botao-download:hover {
+      background-color: #e68a00;
+    }
   </style>
 </head>
 <body>
-  <div class="botoes-controle">
-    <button class="botao" onclick="window.print()">Imprimir / Salvar PDF</button>
-    <button class="botao" onclick="window.history.back()">Voltar</button>
+  <div class="page-container">
+    <div class="botoes-controle">
+      <button class="botao botao-imprimir" onclick="window.print()">Imprimir Certificado</button>
+      <button class="botao botao-download" onclick="downloadPDF()">Baixar como PDF</button>
+      <button class="botao botao-voltar" onclick="window.history.back()">Voltar</button>
+    </div>
+
+    <div class="certificado-container">
+      <div class="certificado-header">
+        <div class="certificado-titulo">Certificado</div>
+        <div class="certificado-subtitulo">DE ${certificado.tipo_certificado.toUpperCase()}</div>
+      </div>
+      
+      <div class="certificado-nome">${participante.nome}</div>
+      
+      <div class="certificado-texto">
+        Certificamos que o participante acima concluiu com sucesso o evento 
+        <strong>"${evento.nome}"</strong> realizado em ${dataEvento}.
+      </div>
+      
+      <div class="certificado-descricao">
+        ${certificado.descricao}
+      </div>
+      
+      <div class="certificado-footer">
+        <div class="certificado-assinatura">Diretor do Evento</div>
+        <div class="certificado-cargo">Coordenação de Eventos</div>
+      </div>
+      
+      <div class="certificado-data">Emitido em: ${dataEmissao}</div>
+      <div class="certificado-validacao">Código de validação: ${certificado.cod_validacao}</div>
+      <div class="certificado-selo"></div>
+    </div>
   </div>
 
-  <div class="certificado-container">
-    <div class="certificado-titulo">Certificado</div>
-    <div class="certificado-subtitulo">DE ${certificado.tipo_certificado.toUpperCase()}</div>
+  <script>
+    function downloadPDF() {
+      window.print();
+    }
     
-    <div class="certificado-nome">${participante.nome}</div>
-    
-    <div class="certificado-texto">
-      Certificamos que o participante acima concluiu com sucesso o evento 
-      <strong>"${evento.nome}"</strong> realizado em ${dataEvento}.
-    </div>
-    
-    <div class="certificado-descricao">
-      ${certificado.descricao}
-    </div>
-    
-    <div class="certificado-footer">
-      <div class="certificado-assinatura">Prof. Dr. João Silva</div>
-      <div class="certificado-cargo">Diretor do Evento</div>
-    </div>
-    
-    <div class="certificado-validacao">
-      Código de validação: ${certificado.cod_validacao}
-    </div>
-    
-    <div class="certificado-data">
-      Emitido em: ${dataEmissao}
-    </div>
-  </div>
+    // Adiciona a data e hora atual ao título para evitar cache
+    document.title = "Certificado - ${participante.nome} - " + new Date().toLocaleString();
+  </script>
 </body>
 </html>`;
     } catch (error) {
-      console.error("Erro ao gerar HTML do certificado:", error);
+      console.error('Erro ao gerar HTML do certificado:', error);
       throw new Error("Erro ao gerar HTML do certificado: " + error.message);
     }
   }
