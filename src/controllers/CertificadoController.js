@@ -61,12 +61,18 @@ class CertificadoController {
       if (!id) {
         return res.status(400).json({ message: "ID do certificado não informado" });
       }
-      
-      // Gera o certificado e retorna a URL relativa
-      const relativeUrl = await CertificadoService.gerarCertificado(id);
-      // Constrói a URL completa com base no host e protocolo da requisição
-      const fullUrl = `${req.protocol}://${req.get('host')}${relativeUrl}`;
-      res.json(fullUrl);
+
+      // Busca o certificado e relacionamentos
+      const certificado = await CertificadoService.findByPk(req);
+      if (!certificado) {
+        return res.status(404).json({ message: "Certificado não encontrado" });
+      }
+
+      // Gera o HTML do certificado dinamicamente
+      const html = CertificadoService.gerarHTMLCertificado(certificado);
+      // Retorna o HTML com o content-type correto
+      res.set('Content-Type', 'text/html; charset=utf-8');
+      res.send(html);
     } catch (error) {
       next(error);
     }
