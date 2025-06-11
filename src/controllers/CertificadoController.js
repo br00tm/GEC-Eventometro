@@ -22,9 +22,18 @@ class CertificadoController {
   }
 
   static async findByPk(req, res, next) {
-    CertificadoService.findByPk(req)
-      .then(obj => res.json(obj))
-      .catch(next);
+    try {
+      // Busca o certificado
+      const obj = await CertificadoService.findByPk(req);
+      // Se já tiver um arquivo gerado, transforma o caminho relativo em URL completa
+      if (obj?.arquivo_path) {
+        const fullUrl = `${req.protocol}://${req.get('host')}${obj.arquivo_path}`;
+        obj.arquivo_path = fullUrl;
+      }
+      res.json(obj);
+    } catch (error) {
+      next(error);
+    }
   }
 
   static async create(req, res, next) {
