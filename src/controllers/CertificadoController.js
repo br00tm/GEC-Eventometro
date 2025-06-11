@@ -53,8 +53,11 @@ class CertificadoController {
         return res.status(400).json({ message: "ID do certificado não informado" });
       }
       
-      const fileUrl = await CertificadoService.gerarCertificado(id);
-      res.json(fileUrl);
+      // Gera o certificado e retorna a URL relativa
+      const relativeUrl = await CertificadoService.gerarCertificado(id);
+      // Constrói a URL completa com base no host e protocolo da requisição
+      const fullUrl = `${req.protocol}://${req.get('host')}${relativeUrl}`;
+      res.json(fullUrl);
     } catch (error) {
       next(error);
     }

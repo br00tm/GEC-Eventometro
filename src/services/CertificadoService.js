@@ -519,9 +519,8 @@ class CertificadoService {
       certificado.arquivo_path = fileUrl;
       await certificado.save();
 
-      // Retornar a URL completa para acesso ao certificado
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3333';
-      return `${baseUrl}${fileUrl}`;
+      // Retornar apenas a URL relativa para acesso ao certificado
+      return fileUrl;
     } catch (error) {
       console.error('Erro ao gerar certificado:', error);
       throw new Error("Erro ao gerar certificado: " + error.message);
